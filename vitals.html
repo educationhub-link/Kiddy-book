@@ -1,1 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vital Signs | Kiddy Book</title>
 
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fffaf6;
+      color: #3f3531;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 850px;
+      margin: auto;
+      padding: 22px 18px 50px;
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, #ffe7da, #fff1e8);
+      border-radius: 30px;
+      padding: 32px 20px;
+      text-align: center;
+      margin-bottom: 28px;
+      box-shadow: 0 5px 18px rgba(90, 60, 45, 0.08);
+    }
+
+    .bear {
+      font-size: 52px;
+      margin-bottom: 5px;
+    }
+
+    .header h1 {
+      margin: 5px 0;
+      font-size: 34px;
+      color: #81503d;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      font-weight: bold;
+      color: #3f3531;
+      margin-top: 8px;
+    }
+
+    .tagline {
+      color: #8c7b72;
+      font-size: 16px;
+      margin-top: 8px;
+    }
+
+    /* BACK BUTTON */
+    .back {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 10px 16px;
+      border-radius: 15px;
+      text-decoration: none;
+      color: #6c4c3e;
+      background: #fff;
+      border: 1px solid #eadbd3;
+      font-weight: bold;
+    }
+
+    /* INTRO */
+    .intro {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .intro h2 {
+      font-size: 27px;
+      margin-bottom: 8px;
+      color: #65483c;
+    }
+
+    .intro p {
+      color: #7c6b63;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* MENU BUTTONS */
+    .menu {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .menu-button {
+      width: 100%;
+      border: none;
+      border-radius: 24px;
+      padding: 24px 18px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #403632;
+      background: #fff;
+      border: 1px solid #eaded8;
+      box-shadow: 0 5px 15px rgba(90, 60, 45, 0.08);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .menu-button span {
+      font-size: 30px;
+      margin-right: 12px;
+    }
+
+    .menu-button:hover {
+      background: #fff4ed;
+    }
+
+    /* CONTENT CARDS */
+    .content-section {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 26px;
+      padding: 22px 16px;
+      margin-bottom: 22px;
+      border: 1px solid #eee0d8;
+      box-shadow: 0 6px 18px rgba(90, 60, 45, 0.07);
+    }
+
+    .card h2 {
+      text-align: center;
+      margin-top: 0;
+      color: #60473c;
+      font-size: 26px;
+    }
+
+    .card-subtitle {
+      text-align: center;
+      color: #85736b;
+      margin-top: -8px;
+      margin-bottom: 20px;
+    }
+
+    /* TABLE */
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: 18px;
+      border: 1px solid #dfe6ff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 650px;
+      background: white;
+    }
+
+    th,
+    td {
+      padding: 16px 12px;
+      text-align: center;
+      border-bottom: 1px solid #e5e5e5;
+      border-right: 1px solid #ececec;
+      font-size: 15px;
+    }
+
+    th:last-child,
+    td:last-child {
+      border-right: none;
+    }
+
+    th {
+      background: #eef4ff;
+      color: #233f83;
+      font-weight: bold;
+    }
+
+    th.hr {
+      background: #fff0f5;
+      color: #c42e65;
+    }
+
+    th.rr {
+      background: #eef6ff;
+      color: #1f5cad;
+    }
+
+    th.bp {
+      background: #f5f0ff;
+      color: #6940a7;
+    }
+
+    .age-cell {
+      text-align: left;
+      font-weight: bold;
+      color: #273f7c;
+      white-space: nowrap;
+    }
+
+    .age-emoji {
+      font-size: 23px;
+      margin-right: 5px;
+    }
+
+    /* FORMULA */
+    .formula-box {
+      margin-top: 18px;
+      background: #eef6ff;
+      border: 1px solid #bad1ff;
+      border-radius: 18px;
+      padding: 17px;
+      text-align: center;
+      color: #233f83;
+      font-size: 17px;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+
+    /* VITAL PARAMETER SECTION */
+    .green-header {
+      background: linear-gradient(135deg, #4db8a4, #168979);
+      color: white;
+      border-radius: 20px 20px 8px 8px;
+      padding: 18px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 0;
+    }
+
+    .definition {
+      text-align: center;
+      font-weight: bold;
+      padding: 14px;
+      background: #f2fbf8;
+      border-left: 1px solid #8fcfc2;
+      border-right: 1px solid #8fcfc2;
+    }
+
+    .parameter-table {
+      min-width: 0;
+      border: 1px solid #8fcfc2;
+    }
+
+    .parameter-table td {
+      border-color: #a8d7ce;
+      padding: 17px 12px;
+      font-size: 16px;
+    }
+
+    .parameter-table td:first-child {
+      background: #effaf6;
+      font-weight: bold;
+      text-align: left;
+      width: 42%;
+    }
+
+    .map-box {
+      background: #fff4ce;
+      border: 1px solid #e8cf72;
+      border-radius: 0 0 20px 20px;
+      padding: 18px 12px;
+      text-align: center;
+      font-size: 19px;
+      font-weight: bold;
+      color: #41391f;
+    }
+
+    /* NOTE */
+    .note {
+      background: #fff8ed;
+      border-left: 5px solid #f1b95b;
+      border-radius: 14px;
+      padding: 15px;
+      margin-top: 20px;
+      line-height: 1.5;
+      color: #65564d;
+      font-size: 14px;
+    }
+
+    .section-back {
+      display: block;
+      width: 100%;
+      margin-top: 18px;
+      border: none;
+      border-radius: 15px;
+      padding: 14px;
+      background: #f5ebe5;
+      color: #60473c;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    .footer {
+      text-align: center;
+      color: #a08d83;
+      font-size: 13px;
+      margin-top: 30px;
+    }
+
+    @media (min-width: 650px) {
+      .menu {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .container {
+        padding-left: 25px;
+        padding-right: 25px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .header h1 {
+        font-size: 30px;
+      }
+
+      .card h2 {
+        font-size: 23px;
+      }
+
+      th,
+      td {
+        padding: 14px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <a class="back" href="index.html">← Back to Kiddy Book</a>
+
+    <header class="header">
+      <div class="bear">🧸</div>
+      <h1>Vital Signs</h1>
+      <div class="subtitle">Paediatric Quick Reference</div>
+      <div class="tagline">Small Hands, Big Hearts</div>
+    </header>
+
+    <!-- MAIN MENU -->
+    <div id="mainMenu">
+
+      <div class="intro">
+        <h2>🩺 Vital Signs Reference</h2>
+        <p>
+          Select a section below to view the reference.
+        </p>
+      </div>
+
+      <div class="menu">
+
+        <button
+          class="menu-button"
+          onclick="showSection('normalVitals')"
+        >
+          <span>💓</span>
+          Normal HR, RR &amp; SBP
+        </button>
+
+        <button
+          class="menu-button"
+          onclick="showSection('vitalParameters')"
+        >
+          <span>📋</span>
+          Vital Parameters
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- ====================================== -->
+    <!-- NORMAL HR RR SBP -->
+    <!-- ====================================== -->
+
+    <section
+      id="normalVitals"
+      class="content-section"
+    >
+
+      <div class="card">
+
+        <h2>💓 Table of Normal HR, RR &amp; SBP</h2>
+
+        <p class="card-subtitle">
+          Paediatric vital signs quick reference
+        </p>
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Age</th>
+                <th class="hr">
+                  Heart Rate<br>
+                  (bpm)
+                </th>
+                <th class="rr">
+                  Resp Rate<br>
+                  (/min)
+                </th>
+                <th class="bp">
+                  Systolic BP<br>
+                  (mmHg)
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td class="age-cell">
+                  <span class="age-emoji">👶🏻</span>
+                  Neonate
+                </td>
+                <td>120–180</td>
+                <td>40–60</td>
+                <td>60–80</td>
+              </tr>
+
+              <tr>
+                <td class="age-cell">
+                  <span class="age-emoji">🍼</span>
+                  Infant<br>
+                  <small>(1 mth–1 yr)</small>
+                </td>
+                <td>110–160</td>
+                <td>30–40</td>
+                <td>70–90</td>
+              </tr>
+
+              <tr>
+                <td class="age-cell">
+                  <span class="age-emoji">👶</span>
+                  Toddler<br>
+                  <small>(1–2 yrs)</small>
+                </td>
+                <td>100–150</td>
+                <td>25–35</td>
+                <td>80–95</td>
+              </tr>
+
+              <tr>
+                <td class="age-cell">
+                  <span class="age-emoji">👧🏻</span>
+                  Young Child<br>
+                  <small>(2–7 yrs)</small>
+                </td>
+                <td>95–140</td>
+                <td>25–30</td>
+                <td>90–110</td>
+              </tr>
+
+              <tr>
+                <td class="age-cell">
+                  <span class="age-emoji">👦🏻</span>
+                  Older Child<br>
+                  <small>(7–12 yrs)</small>
+                </td>
+                <td>80–120</td>
+                <td>20–25</td>
+                <td>100–120</td>
+              </tr>
+
+              <tr>
+                <td class="age-cell">
+                  <span class="age-emoji">🧑🏻</span>
+                  Child<br>
+                  <small>(&gt;12 yrs)</small>
+                </td>
+                <td>60–100</td>
+                <td>12–15</td>
+                <td>90–120</td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <div class="formula-box">
+          ⭐ For &gt; 1 year:<br>
+          SBP &gt; 70 + (Age in years × 2) mmHg
+        </div>
+
+      </div>
+
+      <button
+        class="section-back"
+        onclick="backToMenu()"
+      >
+        ← Back to Vital Signs Menu
+      </button>
+
+    </section>
+
+
+    <!-- ====================================== -->
+    <!-- VITAL PARAMETERS -->
+    <!-- ====================================== -->
+
+    <section
+      id="vitalParameters"
+      class="content-section"
+    >
+
+      <div class="card">
+
+        <div class="green-header">
+          💚 VITAL PARAMETERS
+        </div>
+
+        <div class="definition">
+          Hypotension is defined as systolic BP:
+        </div>
+
+        <div class="table-wrapper">
+
+          <table class="parameter-table">
+
+            <tbody>
+
+              <tr>
+                <td>Neonate</td>
+                <td>&lt; 60 mmHg</td>
+              </tr>
+
+              <tr>
+                <td>Infants (1–12 mths)</td>
+                <td>&lt; 70 mmHg</td>
+              </tr>
+
+              <tr>
+                <td>Children (1–10 yrs)</td>
+                <td>
+                  &lt; 70 mmHg + [2 × (Age in Yrs)]
+                </td>
+              </tr>
+
+              <tr>
+                <td>Children &gt; 10 yrs</td>
+                <td>&lt; 90 mmHg</td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <div class="map-box">
+          MAP = 50 + [2 × (Age in Years)] mmHg
+        </div>
+
+      </div>
+
+      <button
+        class="section-back"
+        onclick="backToMenu()"
+      >
+        ← Back to Vital Signs Menu
+      </button>
+
+    </section>
+
+
+    <div class="footer">
+      🧸 Kiddy Book • Paediatric Quick Reference
+    </div>
+
+  </main>
+
+
+  <script>
+
+    function showSection(sectionId) {
+
+      document.getElementById("mainMenu").style.display = "none";
+
+      const sections =
+        document.querySelectorAll(".content-section");
+
+      sections.forEach(function(section) {
+        section.classList.remove("active");
+      });
+
+      document
+        .getElementById(sectionId)
+        .classList
+        .add("active");
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+
+    function backToMenu() {
+
+      const sections =
+        document.querySelectorAll(".content-section");
+
+      sections.forEach(function(section) {
+        section.classList.remove("active");
+      });
+
+      document.getElementById("mainMenu").style.display = "block";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+
+  </script>
+
+</body>
+</html>
