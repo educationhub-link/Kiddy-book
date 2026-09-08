@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Drug Calculation | Kiddy Book</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fffaf7;
+      color: #3f3531;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 22px 18px 50px;
+    }
+
+    /* HEADER */
+
+    .header {
+      background: linear-gradient(135deg, #fce7df, #fff0e8);
+      border-radius: 28px;
+      padding: 32px 20px;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .bear {
+      font-size: 52px;
+      margin-bottom: 8px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 34px;
+      color: #7d4c3b;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    .tagline {
+      margin-top: 6px;
+      color: #806f67;
+      font-size: 15px;
+    }
+
+    /* BACK BUTTON */
+
+    .back-button {
+      display: inline-block;
+      text-decoration: none;
+      color: #704d41;
+      background: white;
+      border: 1px solid #ead9d0;
+      border-radius: 14px;
+      padding: 11px 16px;
+      font-weight: bold;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    /* TITLE */
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .page-title .icon {
+      font-size: 48px;
+    }
+
+    .page-title h2 {
+      font-size: 30px;
+      margin: 8px 0 5px;
+      color: #5d4137;
+    }
+
+    .page-title p {
+      color: #7b6c65;
+      line-height: 1.5;
+    }
+
+    /* FORMULA */
+
+    .formula-card {
+      background: linear-gradient(135deg, #f1e7ff, #fff8ff);
+      border: 2px solid #d9c4f5;
+      border-radius: 24px;
+      padding: 24px 18px;
+      text-align: center;
+      margin-bottom: 32px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+    }
+
+    .formula-label {
+      display: inline-block;
+      background: #7651b5;
+      color: white;
+      padding: 8px 24px;
+      border-radius: 20px;
+      font-size: 17px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .formula {
+      font-size: 22px;
+      font-weight: bold;
+      line-height: 1.7;
+    }
+
+    .formula .answer {
+      color: #e54d78;
+    }
+
+    .formula-note {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #7651b5;
+      font-style: italic;
+    }
+
+    /* SECTION */
+
+    .section-title {
+      font-size: 25px;
+      font-weight: bold;
+      margin: 32px 0 16px;
+      color: #5c453c;
+    }
+
+    /* CHILD CARDS */
+
+    .case-card {
+      background: white;
+      border-radius: 24px;
+      padding: 22px;
+      margin-bottom: 24px;
+      border: 1px solid #eaded8;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+
+    .child-a {
+      border-top: 7px solid #55a968;
+    }
+
+    .child-b {
+      border-top: 7px solid #5c91d8;
+    }
+
+    .child-c {
+      border-top: 7px solid #e96b86;
+    }
+
+    .child-label {
+      display: inline-block;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 18px;
+      font-weight: bold;
+      font-size: 19px;
+      margin-bottom: 16px;
+    }
+
+    .label-a {
+      background: #399550;
+    }
+
+    .label-b {
+      background: #397ac5;
+    }
+
+    .label-c {
+      background: #e94f75;
+    }
+
+    .child-icon {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+
+    .patient-info {
+      line-height: 1.65;
+      margin-bottom: 18px;
+    }
+
+    .patient-info strong {
+      color: #3f3531;
+    }
+
+    .order-box {
+      background: #fffaf6;
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .question {
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    /* ANSWER INPUT */
+
+    .answer-area {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    input {
+      flex: 1;
+      min-width: 140px;
+      padding: 14px;
+      border-radius: 13px;
+      border: 2px solid #e3d8d3;
+      font-size: 18px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #bc9e91;
+    }
+
+    button {
+      border: none;
+      padding: 14px 18px;
+      border-radius: 13px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      background: #7651b5;
+      color: white;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .result {
+      margin-top: 15px;
+      padding: 14px;
+      border-radius: 14px;
+      display: none;
+      line-height: 1.55;
+    }
+
+    .correct {
+      display: block;
+      background: #e8f7eb;
+      color: #26733a;
+    }
+
+    .incorrect {
+      display: block;
+      background: #fff0f2;
+      color: #a63c52;
+    }
+
+    .calculation {
+      margin-top: 8px;
+      font-weight: normal;
+    }
+
+    /* REMINDERS */
+
+    .reminder {
+      background: #fff8e8;
+      border: 1px solid #f0dca4;
+      border-radius: 22px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    .reminder h3 {
+      margin-top: 0;
+      color: #755f30;
+    }
+
+    .reminder ul {
+      padding-left: 22px;
+      margin-bottom: 0;
+      line-height: 1.8;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      text-align: center;
+      color: #8b7770;
+      font-size: 13px;
+      margin-top: 35px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 30px;
+      }
+
+      .formula {
+        font-size: 18px;
+      }
+
+      .answer-area {
+        display: block;
+      }
+
+      input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <a href="index.html" class="back-button">
+      ← Back to Kiddy Book
+    </a>
+
+    <header class="header">
+      <div class="bear">🧸</div>
+      <h1>Kiddy Book</h1>
+      <div class="subtitle">Paediatric Quick Reference</div>
+      <div class="tagline">Small Hands, Big Hearts</div>
+    </header>
+
+    <div class="page-title">
+      <div class="icon">💊</div>
+      <h2>Drug Calculation Challenge</h2>
+      <p>
+        Calculate the serving dose for each child,
+        then check your answer.
+      </p>
+    </div>
+
+    <!-- FORMULA -->
+
+    <div class="formula-card">
+
+      <div class="formula-label">
+        FORMULA
+      </div>
+
+      <div class="formula">
+        Ordered Dose
+        ÷
+        Dose on Hand
+        ×
+        Volume
+        =
+        <span class="answer">Serving Dose</span>
+      </div>
+
+      <div class="formula-note">
+        Volume = amount of medication to be given
+      </div>
+
+    </div>
+
+    <div class="section-title">
+      ✏️ Try the Challenge
+    </div>
+
+    <!-- CHILD A -->
+
+    <section class="case-card child-a">
+
+      <div class="child-label label-a">
+        CHILD A
+      </div>
+
+      <div class="child-icon">👦🏻</div>
+
+      <div class="patient-info">
+        <strong>Age:</strong> 4 years 5 months<br>
+        <strong>Weight:</strong> 13.5 kg<br>
+        <strong>Diagnosis:</strong> Otitis Media<br>
+        <strong>Temperature:</strong> 38.2°C
+      </div>
+
+      <div class="order-box">
+        <strong>Dr ordered:</strong><br>
+        Paracetamol suspension 144 mg
+        <br><br>
+
+        <strong>Dose on hand:</strong><br>
+        120 mg / 5 mL
+      </div>
+
+      <div class="question">
+        💊 How many mL should be given?
+      </div>
+
+      <div class="answer-area">
+        <input
+          type="number"
+          id="answerA"
+          step="0.1"
+          placeholder="Enter answer in mL"
+        >
+
+        <button onclick="checkA()">
+          Check Answer
+        </button>
+      </div>
+
+      <div id="resultA" class="result"></div>
+
+    </section>
+
+    <!-- CHILD B -->
+
+    <section class="case-card child-b">
+
+      <div class="child-label label-b">
+        CHILD B
+      </div>
+
+      <div class="child-icon">👶🏻</div>
+
+      <div class="patient-info">
+        <strong>Age:</strong> 5 months 1 week<br>
+        <strong>Weight:</strong> 6.9 kg<br>
+        <strong>Diagnosis:</strong> Bronchiolitis<br>
+        <strong>Temperature:</strong> 38.6°C
+      </div>
+
+      <div class="order-box">
+        <strong>Dr ordered:</strong><br>
+        Paracetamol suspension 84 mg
+        <br><br>
+
+        <strong>Dose on hand:</strong><br>
+        120 mg / 5 mL
+      </div>
+
+      <div class="question">
+        💊 How many mL should be given?
+      </div>
+
+      <div class="answer-area">
+        <input
+          type="number"
+          id="answerB"
+          step="0.1"
+          placeholder="Enter answer in mL"
+        >
+
+        <button onclick="checkB()">
+          Check Answer
+        </button>
+      </div>
+
+      <div id="resultB" class="result"></div>
+
+    </section>
+
+    <!-- CHILD C -->
+
+    <section class="case-card child-c">
+
+      <div class="child-label label-c">
+        CHILD C
+      </div>
+
+      <div class="child-icon">👦🏻</div>
+
+      <div class="patient-info">
+        <strong>Age:</strong> 4 years 7 months<br>
+        <strong>Weight:</strong> 15.7 kg<br>
+        <strong>Diagnosis:</strong>
+        Cellulitis (able to bear weight, complains of pain)
+      </div>
+
+      <div class="order-box">
+        <strong>Dr ordered:</strong><br>
+        Paracetamol suspension 180 mg
+        <br><br>
+
+        <strong>Dose on hand:</strong><br>
+        120 mg / 5 mL
+      </div>
+
+      <div class="question">
+        💊 How many mL should be given?
+      </div>
+
+      <div class="answer-area">
+        <input
+          type="number"
+          id="answerC"
+          step="0.1"
+          placeholder="Enter answer in mL"
+        >
+
+        <button onclick="checkC()">
+          Check Answer
+        </button>
+      </div>
+
+      <div id="resultC" class="result"></div>
+
+    </section>
+
+    <!-- GOOD PRACTICE -->
+
+    <div class="reminder">
+
+      <h3>🌟 Good Practice Reminders</h3>
+
+      <ul>
+        <li>Check the order and patient details.</li>
+        <li>Check the dose and concentration.</li>
+        <li>Calculate carefully and clearly.</li>
+        <li>When in doubt, ask and clarify.</li>
+      </ul>
+
+    </div>
+
+    <div class="footer">
+      Information adapted from KKH resources.<br>
+      For educational purposes only. Do not distribute.
+    </div>
+
+  </main>
+
+  <script>
+
+    function showResult(inputId, resultId, correctAnswer, calculation) {
+
+      const input =
+        parseFloat(document.getElementById(inputId).value);
+
+      const result =
+        document.getElementById(resultId);
+
+      if (isNaN(input)) {
+
+        result.className = "result incorrect";
+
+        result.innerHTML =
+          "✏️ Please enter your answer first.";
+
+        return;
+      }
+
+      if (Math.abs(input - correctAnswer) < 0.01) {
+
+        result.className = "result correct";
+
+        result.innerHTML =
+          "🎉 Correct! The serving dose is <strong>" +
+          correctAnswer +
+          " mL</strong>." +
+          "<div class='calculation'>" +
+          calculation +
+          "</div>";
+
+      } else {
+
+        result.className = "result incorrect";
+
+        result.innerHTML =
+          "💭 Not quite. Try calculating it again using:<br>" +
+          "<strong>Ordered Dose ÷ Dose on Hand × Volume</strong>";
+
+      }
+
+    }
+
+
+    function checkA() {
+
+      showResult(
+        "answerA",
+        "resultA",
+        6,
+        "144 mg ÷ 120 mg × 5 mL = <strong>6 mL</strong>"
+      );
+
+    }
+
+
+    function checkB() {
+
+      showResult(
+        "answerB",
+        "resultB",
+        3.5,
+        "84 mg ÷ 120 mg × 5 mL = <strong>3.5 mL</strong>"
+      );
+
+    }
+
+
+    function checkC() {
+
+      showResult(
+        "answerC",
+        "resultC",
+        7.5,
+        "180 mg ÷ 120 mg × 5 mL = <strong>7.5 mL</strong>"
+      );
+
+    }
+
+  </script>
+
+</body>
+</html>
