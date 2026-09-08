@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kiddy Book</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fffaf6;
+      color: #3f3a37;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: auto;
+      padding: 24px 18px 40px;
+    }
+
+    .header {
+      text-align: center;
+      padding: 28px 18px;
+      background: #ffe9dc;
+      border-radius: 28px;
+      margin-bottom: 26px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    }
+
+    .bear {
+      font-size: 58px;
+      margin-bottom: 6px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      color: #7a4f3d;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .tagline {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #7d746f;
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+
+    .section-title {
+      font-size: 21px;
+      font-weight: bold;
+      margin-bottom: 14px;
+      color: #5d4a41;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 18px 12px;
+      text-align: center;
+      text-decoration: none;
+      color: #403a37;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.07);
+      border: 1px solid #f0e4dd;
+      transition: 0.2s;
+    }
+
+    .card:active {
+      transform: scale(0.97);
+    }
+
+    .icon {
+      display: block;
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .quick .card {
+      background: #fff8f1;
+    }
+
+    .clinical .card {
+      background: #f5fbff;
+    }
+
+    .footer {
+      margin-top: 38px;
+      padding-top: 20px;
+      border-top: 1px solid #eadfd9;
+      text-align: center;
+      font-size: 12px;
+      color: #817771;
+      line-height: 1.6;
+    }
+
+    .updated {
+      font-weight: 600;
+      color: #6b5d56;
+    }
+
+    @media (max-width: 430px) {
+      .container {
+        padding: 18px 14px 32px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 11px;
+      }
+
+      .card {
+        padding: 16px 8px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header class="header">
+      <div class="bear">🧸</div>
+      <h1>Kiddy Book</h1>
+      <div class="subtitle">Paediatric Quick Reference</div>
+      <div class="tagline">Small Hands, Big Hearts</div>
+    </header>
+
+    <section class="section quick">
+      <div class="section-title">⚡ Quick Reference</div>
+
+      <div class="grid">
+
+        <a class="card" href="#">
+          <span class="icon">🩺</span>
+          Vital Signs
+        </a>
+
+        <a class="card" href="#">
+          <span class="icon">😣</span>
+          Pain Assessment
+        </a>
+
+        <a class="card" href="#">
+          <span class="icon">💊</span>
+          Drug Calculation
+        </a>
+
+        <a class="card" href="#">
+          <span class="icon">💨</span>
+          Puff Calculation
+        </a>
+
+        <a class="card" href="#">
+          <span class="icon">🍼</span>
+          Formula Calculation
+        </a>
+
+        <a class="card" href="#">
+          <span class="icon">🧠</span>
+          HEADSS
+        </a>
+
+      </div>
+    </section>
+
+    <section class="section clinical">
+      <div class="section-title">📚 Clinical Topics</div>
+
+      <div class="grid">
+
+        <a class="card" href="#">
+          <span class="icon">🌡️</span>
+          Fever
+        </a>
+
+        <a class="card" href="#">
+          <span class="icon">🫁</span>
+          Asthma
+        </a>
+
+        <a class="card" href="#">
+          <span class="icon">🤱</span>
+          EBM
+        </a>
+
+        <a class="card" href="#">
+          <span class="icon">🍬</span>
+          Hypoglycaemia
+        </a>
+
+        <a class="card" href="#">
+          <span class="icon">🦠</span>
+          Gastroenteritis &amp; Viral Gastritis
+        </a>
+
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="updated">Last updated: September 2026</div>
+      <div>For paediatric educational and quick-reference use.</div>
+      <div>Please refer to the latest institutional guidelines and policies when applicable.</div>
+    </footer>
+
+  </main>
+
+</body>
+</html>
