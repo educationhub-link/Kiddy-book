@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pain Assessment | Kiddy Book</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fffaf6;
+      color: #3f3a37;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: auto;
+      padding: 18px 14px 40px;
+    }
+
+    .back {
+      display: inline-block;
+      margin: 6px 0 18px;
+      text-decoration: none;
+      color: #7a4f3d;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .header {
+      text-align: center;
+      padding: 26px 18px;
+      background: #ffe9dc;
+      border-radius: 26px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    }
+
+    .header-icon {
+      font-size: 48px;
+    }
+
+    h1 {
+      margin: 8px 0 4px;
+      font-size: 30px;
+      color: #7a4f3d;
+    }
+
+    .subtitle {
+      color: #756a65;
+      font-size: 15px;
+    }
+
+    .section-title {
+      margin: 28px 0 12px;
+      font-size: 21px;
+      color: #5d4a41;
+    }
+
+    .info-box {
+      background: #fff4ed;
+      border: 1px solid #f1d9cc;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 18px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .scale-card {
+      background: white;
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 12px;
+      border: 1px solid #eee2dc;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+
+    .scale-name {
+      font-weight: 700;
+      color: #5d4a41;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+
+    .age {
+      font-size: 14px;
+      color: #746b67;
+    }
+
+    .nips-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      font-size: 13px;
+    }
+
+    .nips-table th {
+      background: #ffe9dc;
+      padding: 12px 8px;
+      text-align: left;
+      color: #5d4a41;
+    }
+
+    .nips-table td {
+      padding: 10px 8px;
+      border-top: 1px solid #eee3dd;
+      vertical-align: top;
+      line-height: 1.4;
+    }
+
+    .category {
+      font-weight: 700;
+      color: #704f42;
+    }
+
+    .score {
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .note {
+      margin-top: 15px;
+      padding: 14px;
+      background: #f6fbff;
+      border-radius: 16px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .footer {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid #e8ddd7;
+      font-size: 12px;
+      color: #7f7671;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .updated {
+      font-weight: 700;
+      color: #665952;
+    }
+  </style>
+</head>
+
+<body>
+
+<main class="container">
+
+  <a class="back" href="index.html">← Back to Kiddy Book</a>
+
+  <header class="header">
+    <div class="header-icon">😣</div>
+    <h1>Pain Assessment</h1>
+    <div class="subtitle">Paediatric Pain Scale Quick Reference</div>
+  </header>
+
+  <div class="info-box">
+    Select the appropriate pain assessment tool according to the child's
+    age, developmental ability and clinical setting. Always refer to the
+    latest institutional policy where applicable.
+  </div>
+
+  <h2 class="section-title">🧸 Which Pain Scale Should I Use?</h2>
+
+  <div class="scale-card">
+    <div class="scale-name">N-PASS</div>
+    <div class="age">Neonates in NICU / SCN</div>
+  </div>
+
+  <div class="scale-card">
+    <div class="scale-name">NIPS — Neonatal Infant Pain Scale</div>
+    <div class="age">Age 2 months and below</div>
+  </div>
+
+  <div class="scale-card">
+    <div class="scale-name">FLACC Behavioural Pain Assessment Scale</div>
+    <div class="age">Age 2 months and above</div>
+  </div>
+
+  <div class="scale-card">
+    <div class="scale-name">Wong-Baker FACES Pain Rating Scale</div>
+    <div class="age">Age 3 to 6 years</div>
+  </div>
+
+  <div class="scale-card">
+    <div class="scale-name">Numerical Rating Scale (NRS)</div>
+    <div class="age">Age 6 years and above</div>
+  </div>
+
+  <h2 class="section-title">👶 NIPS Assessment</h2>
+
+  <table class="nips-table">
+
+    <tr>
+      <th>Category</th>
+      <th>Score</th>
+      <th>Observation</th>
+    </tr>
+
+    <tr>
+      <td class="category" rowspan="2">Facial Expression</td>
+      <td class="score">0</td>
+      <td>Relaxed muscles — restful face, neutral expression</td>
+    </tr>
+
+    <tr>
+      <td class="score">1</td>
+      <td>Grimace — tight facial muscles, furrowed brow, chin or jaw</td>
+    </tr>
+
+    <tr>
+      <td class="category" rowspan="3">Cry</td>
+      <td class="score">0</td>
+      <td>No cry — quiet, not crying</td>
+    </tr>
+
+    <tr>
+      <td class="score">1</td>
+      <td>Whimper — mild moaning, intermittent</td>
+    </tr>
+
+    <tr>
+      <td class="score">2</td>
+      <td>Vigorous cry — loud, rising, shrill or continuous cry</td>
+    </tr>
+
+    <tr>
+      <td class="category" rowspan="2">Breathing Pattern</td>
+      <td class="score">0</td>
+      <td>Relaxed — usual breathing pattern for the infant</td>
+    </tr>
+
+    <tr>
+      <td class="score">1</td>
+      <td>
+        Change in breathing — indrawing, irregular or faster than usual;
+        gagging or breath-holding
+      </td>
+    </tr>
+
+    <tr>
+      <td class="category" rowspan="2">Arms</td>
+      <td class="score">0</td>
+      <td>
+        Relaxed / restrained — no muscular rigidity;
+        occasional random movement
+      </td>
+    </tr>
+
+    <tr>
+      <td class="score">1</td>
+      <td>
+        Flexed / extended — tense or straight arms;
+        rigid or rapid flexion / extension
+      </td>
+    </tr>
+
+    <tr>
+      <td class="category" rowspan="2">Legs</td>
+      <td class="score">0</td>
+      <td>
+        Relaxed / restrained — no muscular rigidity;
+        occasional random movement
+      </td>
+    </tr>
+
+    <tr>
+      <td class="score">1</td>
+      <td>
+        Flexed / extended — tense or straight legs;
+        rigid or rapid flexion / extension
+      </td>
+    </tr>
+
+    <tr>
+      <td class="category" rowspan="2">State of Arousal</td>
+      <td class="score">0</td>
+      <td>
+        Sleeping / awake — quiet, peaceful, sleeping or alert
+      </td>
+    </tr>
+
+    <tr>
+      <td class="score">1</td>
+      <td>
+        Fussy — alert, restless or thrashing
+      </td>
+    </tr>
+
+  </table>
+
+  <div class="note">
+    <strong>For intubated infants:</strong>
+    Observe visible mouth and facial movements when assessing crying
+    behaviour, in accordance with local guidance.
+  </div>
+
+  <footer class="footer">
+    <div class="updated">Last updated: September 2026</div>
+    <div>For healthcare staff education and quick reference.</div>
+    <div>
+      Please refer to the latest institutional policies and guidelines
+      for current clinical practice.
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>
