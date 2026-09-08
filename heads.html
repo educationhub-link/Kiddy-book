@@ -1,1 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>HEADSS | Kiddy Book</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fffaf7;
+      color: #493d38;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 22px 18px 45px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #f5eeff, #eadfff);
+      border-radius: 30px;
+      padding: 30px 20px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .header .emoji {
+      font-size: 55px;
+    }
+
+    .header h1 {
+      margin: 10px 0 5px;
+      font-size: 38px;
+      color: #674b8e;
+    }
+
+    .header p {
+      margin: 0;
+      color: #857292;
+      font-size: 18px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .page-title h2 {
+      margin: 0;
+      color: #674b8e;
+      font-size: 30px;
+    }
+
+    .page-title p {
+      margin-top: 8px;
+      color: #777;
+    }
+
+    .intro {
+      background: white;
+      border: 2px solid #e7dff0;
+      border-radius: 22px;
+      padding: 20px;
+      margin-bottom: 24px;
+      line-height: 1.6;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.04);
+    }
+
+    .intro strong {
+      color: #674b8e;
+    }
+
+    .nav-title {
+      text-align: center;
+      font-size: 22px;
+      color: #59486d;
+      margin: 28px 0 15px;
+    }
+
+    .nav-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .nav-card {
+      text-decoration: none;
+      color: #493d38;
+      background: white;
+      border: 2px solid #e5d9ef;
+      border-radius: 20px;
+      padding: 18px 12px;
+      text-align: center;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    }
+
+    .nav-card span {
+      display: block;
+      font-size: 29px;
+      margin-bottom: 7px;
+    }
+
+    .nav-card:active {
+      transform: scale(0.98);
+    }
+
+    .section {
+      background: white;
+      border: 2px solid #e7dff0;
+      border-radius: 24px;
+      padding: 22px;
+      margin-bottom: 18px;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.04);
+      scroll-margin-top: 15px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .section-title .icon {
+      font-size: 30px;
+    }
+
+    .section-title h3 {
+      margin: 0;
+      color: #674b8e;
+      font-size: 23px;
+    }
+
+    .question {
+      font-size: 17px;
+      font-weight: bold;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .option {
+      background: #faf7fd;
+      border: 1px solid #ded3e8;
+      border-radius: 14px;
+      padding: 13px;
+      line-height: 1.4;
+      font-size: 15px;
+    }
+
+    .checkbox {
+      display: inline-block;
+      width: 17px;
+      height: 17px;
+      border: 2px solid #88739b;
+      border-radius: 3px;
+      margin-right: 7px;
+      vertical-align: -3px;
+      background: white;
+    }
+
+    .note {
+      background: #fff8dc;
+      border: 1px solid #efd98e;
+      border-radius: 18px;
+      padding: 17px;
+      margin-top: 25px;
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: center;
+      color: #6b5a25;
+    }
+
+    .back {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: #f0e7e1;
+      color: #604d45;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 650px) {
+      .header h1 {
+        font-size: 32px;
+      }
+
+      .page-title h2 {
+        font-size: 26px;
+      }
+
+      .options {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 19px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .nav-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header class="header">
+      <div class="emoji">🧠</div>
+      <h1>Kiddy Book</h1>
+      <p>Paediatric Quick Reference</p>
+    </header>
+
+    <div class="page-title">
+      <h2>🧠 Adolescent Psychosocial Screening (HEADSS)</h2>
+      <p>Quick Reference</p>
+    </div>
+
+    <section class="intro">
+      Growing up can be challenging, and it is common to face challenges
+      in our lives. This questionnaire helps healthcare professionals
+      understand these challenges in order to better support the adolescent.
+      <br><br>
+
+      <strong>There is no right or wrong answer to these questions.</strong>
+      <br><br>
+
+      Information shared should be kept private between the adolescent
+      and the healthcare professional, except in situations where the
+      adolescent or someone else may be at risk of getting hurt.
+    </section>
+
+    <h3 class="nav-title">
+      Tap a section to jump to it
+    </h3>
+
+    <div class="nav-grid">
+
+      <a class="nav-card" href="#home">
+        <span>🏠</span>
+        Home
+      </a>
+
+      <a class="nav-card" href="#education">
+        <span>🎓</span>
+        Education
+      </a>
+
+      <a class="nav-card" href="#eating">
+        <span>🍽️</span>
+        Eating
+      </a>
+
+      <a class="nav-card" href="#activities">
+        <span>👥</span>
+        Activities & Peers
+      </a>
+
+      <a class="nav-card" href="#drugs">
+        <span>🚫</span>
+        Drugs / Alcohol
+      </a>
+
+      <a class="nav-card" href="#sadness">
+        <span>💭</span>
+        Sadness
+      </a>
+
+      <a class="nav-card" href="#sleep">
+        <span>🌙</span>
+        Sleep
+      </a>
+
+      <a class="nav-card" href="#smoking">
+        <span>🚭</span>
+        Smoking
+      </a>
+
+      <a class="nav-card" href="#safety">
+        <span>🛡️</span>
+        Safety
+      </a>
+
+      <a class="nav-card" href="#selfharm">
+        <span>❤️‍🩹</span>
+        Self-harm / Suicidal Thoughts
+      </a>
+
+      <a class="nav-card" href="#sexuality">
+        <span>💗</span>
+        Sexuality
+      </a>
+
+    </div>
+
+
+    <!-- HOME -->
+
+    <section class="section" id="home">
+
+      <div class="section-title">
+        <div class="icon">🏠</div>
+        <h3>Home</h3>
+      </div>
+
+      <div class="question">
+        How does your family get along with each other?
+      </div>
+
+      <div class="options">
+
+        <div class="option">
+          <span class="checkbox"></span>
+          We get along well
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          We have frequent fights or conflicts
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          I do not have a regular place to stay
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- EDUCATION -->
+
+    <section class="section" id="education">
+
+      <div class="section-title">
+        <div class="icon">🎓</div>
+        <h3>Education</h3>
+      </div>
+
+      <div class="question">
+        Over the past 3 months, how often have you missed school?
+      </div>
+
+      <div class="options">
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Hardly missed school
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Missed more than 2 weeks
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Stopped attending school
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- EATING -->
+
+    <section class="section" id="eating">
+
+      <div class="section-title">
+        <div class="icon">🍽️</div>
+        <h3>Eating</h3>
+      </div>
+
+      <div class="question">
+        Over the past 3 months, were there any changes to your eating habits?
+      </div>
+
+      <div class="options">
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Not at all
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Avoid eating when hungry
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Vomit after most meals
+          <br><br>
+          <span class="checkbox"></span>
+          Lost 3 kg or more
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ACTIVITIES -->
+
+    <section class="section" id="activities">
+
+      <div class="section-title">
+        <div class="icon">👥</div>
+        <h3>Activities and Peers</h3>
+      </div>
+
+      <div class="question">
+        Has someone said things or hurt you repeatedly that made you feel
+        upset or scared?
+      </div>
+
+      <div class="options">
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Not at all
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Occasional
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Frequent
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DRUGS / ALCOHOL -->
+
+    <section class="section" id="drugs">
+
+      <div class="section-title">
+        <div class="icon">🚫</div>
+        <h3>Drugs / Alcohol</h3>
+      </div>
+
+      <div class="question">
+        Do you drink alcohol or take drugs for non-medical reason to feel good?
+      </div>
+
+      <div class="options">
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Not at all
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Occasional
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Frequent
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SADNESS -->
+
+    <section class="section" id="sadness">
+
+      <div class="section-title">
+        <div class="icon">💭</div>
+        <h3>Sadness</h3>
+      </div>
+
+      <div class="question">
+        Over the past 2 weeks, how often have you been feeling down,
+        depressed or hopeless?
+      </div>
+
+      <div class="options">
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Not at all
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Several days
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Nearly every day
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SLEEP -->
+
+    <section class="section" id="sleep">
+
+      <div class="section-title">
+        <div class="icon">🌙</div>
+        <h3>Sleep</h3>
+      </div>
+
+      <div class="question">
+        Over the past 2 weeks, how often have you had trouble falling
+        or staying asleep?
+      </div>
+
+      <div class="options">
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Not at all
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Several days
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Nearly every day
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SMOKING -->
+
+    <section class="section" id="smoking">
+
+      <div class="section-title">
+        <div class="icon">🚭</div>
+        <h3>Smoking</h3>
+      </div>
+
+      <div class="question">
+        How often do you smoke cigarettes or vape?
+      </div>
+
+      <div class="options">
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Not at all
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Occasional
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Frequent
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SAFETY -->
+
+    <section class="section" id="safety">
+
+      <div class="section-title">
+        <div class="icon">🛡️</div>
+        <h3>Safety</h3>
+      </div>
+
+      <div class="question">
+        Do you feel threatened or in danger?
+      </div>
+
+      <div class="options">
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Not at all
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Occasional
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Frequent
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SELF-HARM -->
+
+    <section class="section" id="selfharm">
+
+      <div class="section-title">
+        <div class="icon">❤️‍🩹</div>
+        <h3>Self-harm / Suicidal Thoughts</h3>
+      </div>
+
+      <div class="question">
+        Over the past 2 weeks, how often have you thought that you would
+        be better off dead or hurting yourself in some way?
+      </div>
+
+      <div class="options">
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Not at all
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Several days
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Nearly every day
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SEXUALITY -->
+
+    <section class="section" id="sexuality">
+
+      <div class="section-title">
+        <div class="icon">💗</div>
+        <h3>Sexuality</h3>
+      </div>
+
+      <div class="question">
+        Are you currently in a romantic relationship?
+      </div>
+
+      <div class="options">
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Not at all
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Yes
+        </div>
+
+        <div class="option">
+          <span class="checkbox"></span>
+          Someone touched me in a way that was uncomfortable
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <div class="note">
+      🧸 HEADSS screening is a psychosocial assessment reference.
+      Follow your institution's clinical and safeguarding policies
+      when concerns are identified.
+      <br><br>
+      For educational purposes only. Do not distribute.
+    </div>
+
+    <a class="back" href="index.html">
+      ← Back to Kiddy Book
+    </a>
+
+  </main>
+
+</body>
+</html>
