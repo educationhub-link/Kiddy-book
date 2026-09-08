@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Formula Calculation | Kiddy Book</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fffaf7;
+      color: #493d38;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+      padding: 22px 18px 45px;
+    }
+
+    /* HEADER */
+
+    .header {
+      background: linear-gradient(135deg, #fff1e8, #ffe5d7);
+      border-radius: 30px;
+      padding: 30px 20px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .header .emoji {
+      font-size: 55px;
+    }
+
+    .header h1 {
+      margin: 10px 0 5px;
+      font-size: 38px;
+      color: #7a4d3b;
+    }
+
+    .header p {
+      margin: 0;
+      color: #8b7770;
+      font-size: 18px;
+    }
+
+    /* TITLE */
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .page-title h2 {
+      margin: 0;
+      color: #174ca1;
+      font-size: 31px;
+    }
+
+    .page-title p {
+      color: #777;
+      margin-top: 8px;
+    }
+
+    /* CARD */
+
+    .card {
+      background: white;
+      border: 2px solid #e8dfda;
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.04);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 23px;
+      color: #4e403b;
+    }
+
+    /* FORMULA */
+
+    .formula-card {
+      border-color: #a9c9ff;
+      background: #f8fbff;
+    }
+
+    .formula-label {
+      display: inline-block;
+      background: #ff4f75;
+      color: white;
+      font-weight: bold;
+      padding: 8px 18px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+    }
+
+    .formula {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #173b85;
+      line-height: 1.6;
+    }
+
+    .fraction {
+      display: inline-flex;
+      flex-direction: column;
+      vertical-align: middle;
+      margin: 5px 10px;
+    }
+
+    .fraction .top {
+      border-bottom: 2px solid #173b85;
+      padding: 0 12px 5px;
+    }
+
+    .fraction .bottom {
+      padding-top: 5px;
+    }
+
+    /* EXAMPLE */
+
+    .example {
+      background: #f7fbff;
+      border-color: #a7c9ff;
+    }
+
+    .example-title {
+      color: #1762bd;
+    }
+
+    .step {
+      padding: 8px 0;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .answer-box {
+      margin-top: 15px;
+      padding: 17px;
+      border: 2px dashed #6ba5ee;
+      border-radius: 16px;
+      text-align: center;
+      font-size: 25px;
+      font-weight: bold;
+      color: #174ca1;
+      background: white;
+    }
+
+    /* PRACTICE */
+
+    .practice {
+      border-color: #ffc5d3;
+      background: #fff9fb;
+    }
+
+    .practice h3 {
+      color: #e13d67;
+    }
+
+    .practice-question {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: 18px;
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+      font-size: 18px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 2px solid #e6d9d4;
+      background: white;
+    }
+
+    button {
+      border: none;
+      background: #ff5f83;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      padding: 14px 18px;
+      border-radius: 14px;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    #feedback {
+      margin-top: 15px;
+      padding: 14px;
+      border-radius: 14px;
+      display: none;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+
+    .correct {
+      display: block !important;
+      background: #e9f8ec;
+      color: #24753b;
+    }
+
+    .incorrect {
+      display: block !important;
+      background: #fff0f0;
+      color: #b53c3c;
+    }
+
+    /* REMINDER */
+
+    .reminder {
+      background: #fffdf4;
+      border-color: #f4df9b;
+    }
+
+    .reminder h3 {
+      color: #a77700;
+    }
+
+    .reminder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .reminder-item {
+      background: white;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .reminder-icon {
+      display: block;
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    /* NOTE */
+
+    .note {
+      background: #f6f2ff;
+      border: 1px solid #dfd5f4;
+      border-radius: 18px;
+      padding: 17px;
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: center;
+      color: #665a72;
+    }
+
+    /* BACK BUTTON */
+
+    .back {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: #f0e7e1;
+      color: #604d45;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 520px) {
+
+      .header h1 {
+        font-size: 32px;
+      }
+
+      .page-title h2 {
+        font-size: 27px;
+      }
+
+      .formula {
+        font-size: 19px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .reminder-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .input-row {
+        flex-direction: column;
+      }
+
+      input,
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <main class="container">
+
+    <!-- KIDDY BOOK HEADER -->
+
+    <header class="header">
+      <div class="emoji">🍼</div>
+
+      <h1>Kiddy Book</h1>
+
+      <p>Paediatric Quick Reference</p>
+    </header>
+
+
+    <!-- PAGE TITLE -->
+
+    <div class="page-title">
+
+      <h2>🍼 Formula Calculation</h2>
+
+      <p>Quick Reference</p>
+
+    </div>
+
+
+    <!-- FORMULA -->
+
+    <section class="card formula-card">
+
+      <div class="formula-label">
+        FORMULA
+      </div>
+
+      <div class="formula">
+
+        <span class="fraction">
+
+          <span class="top">
+            Weight in kg × 150 mL
+          </span>
+
+          <span class="bottom">
+            Number of feeds in a day
+          </span>
+
+        </span>
+
+        = mL per feed
+
+      </div>
+
+    </section>
+
+
+    <!-- WORKED EXAMPLE -->
+
+    <section class="card example">
+
+      <h3 class="example-title">
+        ⭐ Worked Example
+      </h3>
+
+      <div class="step">
+        👶 <strong>Baby weight:</strong> 4 kg
+      </div>
+
+      <div class="step">
+        🍼 <strong>Number of feeds:</strong> 8 feeds/day
+      </div>
+
+      <div class="step">
+        <strong>Step 1:</strong><br>
+        4 kg × 150 mL = 600 mL/day
+      </div>
+
+      <div class="step">
+        <strong>Step 2:</strong><br>
+        600 mL ÷ 8 feeds = 75 mL/feed
+      </div>
+
+      <div class="answer-box">
+        ✓ 75 mL per feed
+      </div>
+
+    </section>
+
+
+    <!-- PRACTICE -->
+
+    <section class="card practice">
+
+      <h3>
+        ✏️ Try It Yourself
+      </h3>
+
+      <div class="practice-question">
+
+        Baby weighs <strong>6.8 kg</strong>.
+
+        <br><br>
+
+        The baby receives
+        <strong>8 feeds per day</strong>.
+
+        <br><br>
+
+        How much formula should be given
+        <strong>per feed?</strong>
+
+      </div>
+
+
+      <div class="input-row">
+
+        <input
+          id="answer"
+          type="number"
+          inputmode="decimal"
+          placeholder="Enter answer in mL"
+        >
+
+        <button onclick="checkAnswer()">
+          Check Answer
+        </button>
+
+      </div>
+
+
+      <div id="feedback"></div>
+
+    </section>
+
+
+    <!-- GOOD PRACTICE -->
+
+    <section class="card reminder">
+
+      <h3>
+        💡 Good Practice Reminders
+      </h3>
+
+      <div class="reminder-grid">
+
+        <div class="reminder-item">
+
+          <span class="reminder-icon">📋</span>
+
+          Check the order and
+          patient details.
+
+        </div>
+
+
+        <div class="reminder-item">
+
+          <span class="reminder-icon">🍼</span>
+
+          Confirm the prescribed
+          feeding plan.
+
+        </div>
+
+
+        <div class="reminder-item">
+
+          <span class="reminder-icon">🧮</span>
+
+          Calculate carefully
+          and clearly.
+
+        </div>
+
+
+        <div class="reminder-item">
+
+          <span class="reminder-icon">💬</span>
+
+          When in doubt,
+          ask and clarify.
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- EDUCATIONAL NOTE -->
+
+    <div class="note">
+
+      Information adapted from KKH resources.
+
+      <br>
+
+      For educational purposes only.
+      Do not distribute.
+
+    </div>
+
+
+    <!-- BACK HOME -->
+
+    <a class="back" href="index.html">
+      ← Back to Kiddy Book
+    </a>
+
+  </main>
+
+
+  <script>
+
+    function checkAnswer() {
+
+      const input =
+        document.getElementById("answer");
+
+      const feedback =
+        document.getElementById("feedback");
+
+      const answer =
+        parseFloat(input.value);
+
+
+      feedback.className = "";
+
+
+      if (isNaN(answer)) {
+
+        feedback.textContent =
+          "🍼 Enter your answer first.";
+
+        feedback.classList.add("incorrect");
+
+        return;
+      }
+
+
+      /*
+        6.8 kg × 150 mL
+        = 1020 mL/day
+
+        1020 ÷ 8
+        = 127.5 mL/feed
+      */
+
+
+      if (Math.abs(answer - 127.5) < 0.1) {
+
+        feedback.innerHTML =
+          "🎉 Correct!<br><br>" +
+          "6.8 × 150 = 1020 mL/day<br>" +
+          "1020 ÷ 8 = <strong>127.5 mL per feed</strong>";
+
+        feedback.classList.add("correct");
+
+      }
+
+      else {
+
+        feedback.innerHTML =
+          "💭 Not quite. Try again!<br><br>" +
+          "Hint: First calculate <strong>6.8 × 150</strong>, " +
+          "then divide the result by <strong>8 feeds</strong>.";
+
+        feedback.classList.add("incorrect");
+
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>
