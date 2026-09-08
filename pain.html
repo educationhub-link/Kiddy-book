@@ -10,311 +10,762 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background: #fffaf6;
-      color: #3f3a37;
+      color: #403630;
     }
 
     .container {
-      max-width: 680px;
+      max-width: 850px;
       margin: auto;
-      padding: 18px 14px 40px;
+      padding: 20px 18px 50px;
     }
 
-    .back {
-      display: inline-block;
-      margin: 6px 0 18px;
-      text-decoration: none;
-      color: #7a4f3d;
-      font-weight: 700;
-      font-size: 15px;
-    }
+    /* HEADER */
 
     .header {
+      background: #fde7d8;
+      border-radius: 30px;
+      padding: 28px 20px;
       text-align: center;
-      padding: 26px 18px;
-      background: #ffe9dc;
-      border-radius: 26px;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+      margin-bottom: 28px;
     }
 
-    .header-icon {
+    .bear {
       font-size: 48px;
+      margin-bottom: 6px;
     }
 
-    h1 {
-      margin: 8px 0 4px;
-      font-size: 30px;
-      color: #7a4f3d;
+    .header h1 {
+      margin: 0;
+      color: #81513d;
+      font-size: 34px;
     }
 
     .subtitle {
-      color: #756a65;
+      margin-top: 8px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .tagline {
+      margin-top: 7px;
+      color: #8c817a;
       font-size: 15px;
     }
 
-    .section-title {
-      margin: 28px 0 12px;
-      font-size: 21px;
-      color: #5d4a41;
+    /* INTRO */
+
+    .intro {
+      text-align: center;
+      margin-bottom: 24px;
     }
 
-    .info-box {
-      background: #fff4ed;
-      border: 1px solid #f1d9cc;
-      border-radius: 18px;
-      padding: 16px;
-      margin-bottom: 18px;
+    .intro h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+      color: #5b463d;
+    }
+
+    .intro p {
+      color: #746963;
       line-height: 1.5;
-      font-size: 14px;
+      margin-top: 0;
     }
 
-    .scale-card {
+    /* FOUR MAIN BUTTONS */
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .pain-button {
+      border: 2px solid #f1dfd4;
       background: white;
-      border-radius: 18px;
-      padding: 16px;
-      margin-bottom: 12px;
-      border: 1px solid #eee2dc;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      border-radius: 24px;
+      padding: 25px 10px;
+      min-height: 145px;
+      cursor: pointer;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      transition: 0.2s;
+      color: #403630;
     }
 
-    .scale-name {
-      font-weight: 700;
-      color: #5d4a41;
-      margin-bottom: 5px;
-      font-size: 16px;
+    .pain-button:active {
+      transform: scale(0.97);
     }
 
-    .age {
-      font-size: 14px;
-      color: #746b67;
+    .pain-button .icon {
+      display: block;
+      font-size: 38px;
+      margin-bottom: 10px;
     }
 
-    .nips-table {
-      width: 100%;
-      border-collapse: collapse;
+    .pain-button strong {
+      display: block;
+      font-size: 20px;
+    }
+
+    .pain-button small {
+      display: block;
+      margin-top: 7px;
+      color: #81746c;
+      line-height: 1.3;
+    }
+
+    /* PAIN SECTIONS */
+
+    .pain-section {
+      display: none;
       background: white;
-      border-radius: 18px;
-      overflow: hidden;
-      font-size: 13px;
+      border: 2px solid #f1e1d7;
+      border-radius: 25px;
+      padding: 22px;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.04);
     }
 
-    .nips-table th {
-      background: #ffe9dc;
-      padding: 12px 8px;
-      text-align: left;
-      color: #5d4a41;
+    .pain-section.active {
+      display: block;
     }
 
-    .nips-table td {
-      padding: 10px 8px;
-      border-top: 1px solid #eee3dd;
-      vertical-align: top;
-      line-height: 1.4;
-    }
-
-    .category {
-      font-weight: 700;
-      color: #704f42;
-    }
-
-    .score {
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .note {
-      margin-top: 15px;
-      padding: 14px;
-      background: #f6fbff;
-      border-radius: 16px;
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    .footer {
-      margin-top: 34px;
-      padding-top: 18px;
-      border-top: 1px solid #e8ddd7;
-      font-size: 12px;
-      color: #7f7671;
-      line-height: 1.6;
+    .pain-section h2 {
+      margin-top: 0;
+      color: #80533f;
+      font-size: 27px;
       text-align: center;
     }
 
-    .updated {
-      font-weight: 700;
-      color: #665952;
+    .age-label {
+      display: table;
+      margin: 0 auto 20px;
+      background: #fff0e5;
+      color: #80533f;
+      border-radius: 20px;
+      padding: 8px 15px;
+      font-weight: bold;
+    }
+
+    .note {
+      background: #fff7f0;
+      border-left: 5px solid #e9b99d;
+      padding: 13px 15px;
+      border-radius: 10px;
+      margin: 15px 0;
+      line-height: 1.5;
+    }
+
+    /* TABLES */
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 15px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+    }
+
+    th, td {
+      border: 1px solid #eaded6;
+      padding: 11px 9px;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 1.35;
+    }
+
+    th {
+      background: #fce9dd;
+      color: #694b3e;
+    }
+
+    td:first-child {
+      font-weight: bold;
+    }
+
+    /* WONG BAKER */
+
+    .faces {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      margin: 22px 0;
+    }
+
+    .face {
+      text-align: center;
+      background: #fff9f5;
+      border: 1px solid #f0dfd5;
+      border-radius: 16px;
+      padding: 12px 4px;
+    }
+
+    .face .emoji {
+      font-size: 34px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .face .score {
+      font-size: 20px;
+      font-weight: bold;
+      color: #80533f;
+    }
+
+    .face small {
+      display: block;
+      margin-top: 5px;
+      font-size: 11px;
+    }
+
+    /* NRS */
+
+    .nrs {
+      margin: 25px 0 15px;
+    }
+
+    .number-row {
+      display: grid;
+      grid-template-columns: repeat(11, 1fr);
+      gap: 3px;
+    }
+
+    .number {
+      text-align: center;
+      padding: 12px 1px;
+      border-radius: 10px;
+      background: #fff3ea;
+      font-weight: bold;
+      font-size: 17px;
+    }
+
+    .nrs-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    /* SCORING */
+
+    .score-box {
+      background: #fff8f3;
+      border-radius: 18px;
+      padding: 17px;
+      margin-top: 18px;
+    }
+
+    .score-box h3 {
+      margin-top: 0;
+      color: #80533f;
+    }
+
+    .score-box p {
+      margin: 7px 0;
+      line-height: 1.4;
+    }
+
+    /* CLOSE */
+
+    .close-button {
+      display: block;
+      margin: 25px auto 3px;
+      border: none;
+      background: #81513d;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 18px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* BACK HOME */
+
+    .home-button {
+      display: block;
+      text-decoration: none;
+      background: #fde7d8;
+      color: #80533f;
+      text-align: center;
+      padding: 15px;
+      border-radius: 18px;
+      font-weight: bold;
+      margin-top: 28px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 28px;
+      color: #93877f;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+
+      .container {
+        padding: 15px 14px 40px;
+      }
+
+      .header {
+        padding: 24px 15px;
+      }
+
+      .header h1 {
+        font-size: 30px;
+      }
+
+      .pain-grid {
+        gap: 11px;
+      }
+
+      .pain-button {
+        padding: 20px 6px;
+        min-height: 135px;
+      }
+
+      .pain-button strong {
+        font-size: 17px;
+      }
+
+      .pain-button small {
+        font-size: 11px;
+      }
+
+      .faces {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .number {
+        font-size: 13px;
+        padding: 10px 0;
+      }
+
+      .pain-section {
+        padding: 17px 13px;
+      }
     }
   </style>
 </head>
+
 
 <body>
 
 <main class="container">
 
-  <a class="back" href="index.html">← Back to Kiddy Book</a>
+  <!-- HEADER -->
 
   <header class="header">
-    <div class="header-icon">😣</div>
+    <div class="bear">🧸</div>
     <h1>Pain Assessment</h1>
-    <div class="subtitle">Paediatric Pain Scale Quick Reference</div>
+    <div class="subtitle">Paediatric Quick Reference</div>
+    <div class="tagline">Small Hands, Big Hearts</div>
   </header>
 
-  <div class="info-box">
-    Select the appropriate pain assessment tool according to the child's
-    age, developmental ability and clinical setting. Always refer to the
-    latest institutional policy where applicable.
+
+  <!-- INTRO -->
+
+  <section class="intro">
+    <h2>😣 Pain Assessment</h2>
+    <p>
+      Select the appropriate pain assessment tool below
+      to view the quick reference.
+    </p>
+  </section>
+
+
+  <!-- FOUR LARGE BUTTONS -->
+
+  <div class="pain-grid">
+
+    <button class="pain-button" onclick="openSection('nips')">
+      <span class="icon">👶</span>
+      <strong>NIPS</strong>
+      <small>Age 2 months and below</small>
+    </button>
+
+    <button class="pain-button" onclick="openSection('wong')">
+      <span class="icon">😊</span>
+      <strong>Wong-Baker FACES</strong>
+      <small>Faces Pain Rating Scale</small>
+    </button>
+
+    <button class="pain-button" onclick="openSection('nrs')">
+      <span class="icon">🔢</span>
+      <strong>Numeric Rating Scale</strong>
+      <small>NRS 0–10</small>
+    </button>
+
+    <button class="pain-button" onclick="openSection('flacc')">
+      <span class="icon">🧸</span>
+      <strong>FLACC Scale</strong>
+      <small>Behavioural pain assessment</small>
+    </button>
+
   </div>
 
-  <h2 class="section-title">🧸 Which Pain Scale Should I Use?</h2>
 
-  <div class="scale-card">
-    <div class="scale-name">N-PASS</div>
-    <div class="age">Neonates in NICU / SCN</div>
-  </div>
+  <!-- NIPS -->
 
-  <div class="scale-card">
-    <div class="scale-name">NIPS — Neonatal Infant Pain Scale</div>
-    <div class="age">Age 2 months and below</div>
-  </div>
+  <section id="nips" class="pain-section">
 
-  <div class="scale-card">
-    <div class="scale-name">FLACC Behavioural Pain Assessment Scale</div>
-    <div class="age">Age 2 months and above</div>
-  </div>
+    <h2>👶 NIPS</h2>
 
-  <div class="scale-card">
-    <div class="scale-name">Wong-Baker FACES Pain Rating Scale</div>
-    <div class="age">Age 3 to 6 years</div>
-  </div>
-
-  <div class="scale-card">
-    <div class="scale-name">Numerical Rating Scale (NRS)</div>
-    <div class="age">Age 6 years and above</div>
-  </div>
-
-  <h2 class="section-title">👶 NIPS Assessment</h2>
-
-  <table class="nips-table">
-
-    <tr>
-      <th>Category</th>
-      <th>Score</th>
-      <th>Observation</th>
-    </tr>
-
-    <tr>
-      <td class="category" rowspan="2">Facial Expression</td>
-      <td class="score">0</td>
-      <td>Relaxed muscles — restful face, neutral expression</td>
-    </tr>
-
-    <tr>
-      <td class="score">1</td>
-      <td>Grimace — tight facial muscles, furrowed brow, chin or jaw</td>
-    </tr>
-
-    <tr>
-      <td class="category" rowspan="3">Cry</td>
-      <td class="score">0</td>
-      <td>No cry — quiet, not crying</td>
-    </tr>
-
-    <tr>
-      <td class="score">1</td>
-      <td>Whimper — mild moaning, intermittent</td>
-    </tr>
-
-    <tr>
-      <td class="score">2</td>
-      <td>Vigorous cry — loud, rising, shrill or continuous cry</td>
-    </tr>
-
-    <tr>
-      <td class="category" rowspan="2">Breathing Pattern</td>
-      <td class="score">0</td>
-      <td>Relaxed — usual breathing pattern for the infant</td>
-    </tr>
-
-    <tr>
-      <td class="score">1</td>
-      <td>
-        Change in breathing — indrawing, irregular or faster than usual;
-        gagging or breath-holding
-      </td>
-    </tr>
-
-    <tr>
-      <td class="category" rowspan="2">Arms</td>
-      <td class="score">0</td>
-      <td>
-        Relaxed / restrained — no muscular rigidity;
-        occasional random movement
-      </td>
-    </tr>
-
-    <tr>
-      <td class="score">1</td>
-      <td>
-        Flexed / extended — tense or straight arms;
-        rigid or rapid flexion / extension
-      </td>
-    </tr>
-
-    <tr>
-      <td class="category" rowspan="2">Legs</td>
-      <td class="score">0</td>
-      <td>
-        Relaxed / restrained — no muscular rigidity;
-        occasional random movement
-      </td>
-    </tr>
-
-    <tr>
-      <td class="score">1</td>
-      <td>
-        Flexed / extended — tense or straight legs;
-        rigid or rapid flexion / extension
-      </td>
-    </tr>
-
-    <tr>
-      <td class="category" rowspan="2">State of Arousal</td>
-      <td class="score">0</td>
-      <td>
-        Sleeping / awake — quiet, peaceful, sleeping or alert
-      </td>
-    </tr>
-
-    <tr>
-      <td class="score">1</td>
-      <td>
-        Fussy — alert, restless or thrashing
-      </td>
-    </tr>
-
-  </table>
-
-  <div class="note">
-    <strong>For intubated infants:</strong>
-    Observe visible mouth and facial movements when assessing crying
-    behaviour, in accordance with local guidance.
-  </div>
-
-  <footer class="footer">
-    <div class="updated">Last updated: September 2026</div>
-    <div>For healthcare staff education and quick reference.</div>
-    <div>
-      Please refer to the latest institutional policies and guidelines
-      for current clinical practice.
+    <div class="age-label">
+      Age 2 months and below
     </div>
+
+    <p>
+      <strong>Neonatal Infant Pain Scale (NIPS)</strong>
+    </p>
+
+    <div class="table-wrap">
+      <table>
+
+        <tr>
+          <th>Indicator</th>
+          <th>0</th>
+          <th>1</th>
+          <th>2</th>
+        </tr>
+
+        <tr>
+          <td>Facial Expression</td>
+          <td>Relaxed muscles</td>
+          <td>Grimace</td>
+          <td>—</td>
+        </tr>
+
+        <tr>
+          <td>Cry</td>
+          <td>No cry</td>
+          <td>Whimper</td>
+          <td>Vigorous cry</td>
+        </tr>
+
+        <tr>
+          <td>Breathing Pattern</td>
+          <td>Relaxed</td>
+          <td>Change in breathing</td>
+          <td>—</td>
+        </tr>
+
+        <tr>
+          <td>Arms</td>
+          <td>Relaxed / restrained</td>
+          <td>Flexed / extended</td>
+          <td>—</td>
+        </tr>
+
+        <tr>
+          <td>Legs</td>
+          <td>Relaxed / restrained</td>
+          <td>Flexed / extended</td>
+          <td>—</td>
+        </tr>
+
+        <tr>
+          <td>State of Arousal</td>
+          <td>Sleeping / awake</td>
+          <td>Fussy</td>
+          <td>—</td>
+        </tr>
+
+      </table>
+    </div>
+
+    <div class="score-box">
+      <h3>Scoring</h3>
+      <p><strong>Total score:</strong> 0–7</p>
+      <p>
+        A higher score indicates greater behavioural
+        response consistent with pain.
+      </p>
+    </div>
+
+    <button class="close-button" onclick="closeSection('nips')">
+      Close
+    </button>
+
+  </section>
+
+
+  <!-- WONG BAKER -->
+
+  <section id="wong" class="pain-section">
+
+    <h2>😊 Wong-Baker FACES Pain Rating Scale</h2>
+
+    <div class="faces">
+
+      <div class="face">
+        <span class="emoji">😊</span>
+        <span class="score">0</span>
+        <small>No Hurt</small>
+      </div>
+
+      <div class="face">
+        <span class="emoji">🙂</span>
+        <span class="score">2</span>
+        <small>Hurts Little Bit</small>
+      </div>
+
+      <div class="face">
+        <span class="emoji">😐</span>
+        <span class="score">4</span>
+        <small>Hurts Little More</small>
+      </div>
+
+      <div class="face">
+        <span class="emoji">🙁</span>
+        <span class="score">6</span>
+        <small>Hurts Even More</small>
+      </div>
+
+      <div class="face">
+        <span class="emoji">☹️</span>
+        <span class="score">8</span>
+        <small>Hurts Whole Lot</small>
+      </div>
+
+      <div class="face">
+        <span class="emoji">😭</span>
+        <span class="score">10</span>
+        <small>Hurts Worst</small>
+      </div>
+
+    </div>
+
+    <div class="note">
+      💡 <strong>How to use:</strong><br>
+      Ask the child to choose the face that best shows
+      how much pain they feel.
+    </div>
+
+    <button class="close-button" onclick="closeSection('wong')">
+      Close
+    </button>
+
+  </section>
+
+
+  <!-- NUMERIC RATING SCALE -->
+
+  <section id="nrs" class="pain-section">
+
+    <h2>🔢 Numeric Rating Scale (NRS)</h2>
+
+    <div class="nrs">
+
+      <div class="number-row">
+        <div class="number">0</div>
+        <div class="number">1</div>
+        <div class="number">2</div>
+        <div class="number">3</div>
+        <div class="number">4</div>
+        <div class="number">5</div>
+        <div class="number">6</div>
+        <div class="number">7</div>
+        <div class="number">8</div>
+        <div class="number">9</div>
+        <div class="number">10</div>
+      </div>
+
+      <div class="nrs-labels">
+        <span>0 — No Pain</span>
+        <span>10 — Worst Possible Pain</span>
+      </div>
+
+    </div>
+
+    <div class="note">
+      ⭐ <strong>How to use:</strong><br>
+      Ask the child to rate their pain by choosing a
+      number from <strong>0 (no pain)</strong> to
+      <strong>10 (worst possible pain)</strong>.
+    </div>
+
+    <button class="close-button" onclick="closeSection('nrs')">
+      Close
+    </button>
+
+  </section>
+
+
+  <!-- FLACC -->
+
+  <section id="flacc" class="pain-section">
+
+    <h2>🧸 FLACC Scale</h2>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <tr>
+          <th>Category</th>
+          <th>0</th>
+          <th>1</th>
+          <th>2</th>
+        </tr>
+
+        <tr>
+          <td>🙂 Face</td>
+          <td>No particular expression or smile</td>
+          <td>
+            Occasional grimace or frown,
+            withdrawn, disinterested
+          </td>
+          <td>
+            Frequent to constant frown,
+            clenched jaw, quivering chin
+          </td>
+        </tr>
+
+        <tr>
+          <td>🦵 Legs</td>
+          <td>Normal position or relaxed</td>
+          <td>Uneasy, restless, tense</td>
+          <td>Kicking or legs drawn up</td>
+        </tr>
+
+        <tr>
+          <td>🧒 Activity</td>
+          <td>
+            Lying quietly, normal position,
+            moves easily
+          </td>
+          <td>
+            Squirming, shifting back and forth,
+            tense
+          </td>
+          <td>Arched, rigid or jerking</td>
+        </tr>
+
+        <tr>
+          <td>😭 Cry</td>
+          <td>No cry (awake or asleep)</td>
+          <td>
+            Moans or whimpers,
+            occasional complaint
+          </td>
+          <td>
+            Crying steadily, screams or sobs,
+            frequent complaints
+          </td>
+        </tr>
+
+        <tr>
+          <td>❤️ Consolability</td>
+          <td>Content, relaxed</td>
+          <td>
+            Reassured by occasional touching,
+            hugging or talking to; distractible
+          </td>
+          <td>Difficult to console or comfort</td>
+        </tr>
+
+      </table>
+
+    </div>
+
+    <div class="score-box">
+
+      <h3>📋 Scoring</h3>
+
+      <p>
+        🟢 <strong>0</strong> = Relaxed & comfortable
+      </p>
+
+      <p>
+        🟠 <strong>1–3</strong> = Mild to moderate pain
+      </p>
+
+      <p>
+        🔴 <strong>4–10</strong> = Severe pain
+      </p>
+
+    </div>
+
+    <div class="note">
+      💡 <strong>Good to remember:</strong><br><br>
+      • Assess pain regularly<br>
+      • Reassess after intervention<br>
+      • Document pain score<br>
+      • In doubt, ask and clarify<br>
+      • Use appropriate pain relief measures
+    </div>
+
+    <button class="close-button" onclick="closeSection('flacc')">
+      Close
+    </button>
+
+  </section>
+
+
+  <!-- HOME -->
+
+  <a class="home-button" href="index.html">
+    🏠 Back to Kiddy Book
+  </a>
+
+
+  <footer>
+    Information adapted from KKH resources.<br>
+    For educational purposes only.
   </footer>
 
 </main>
+
+
+<script>
+
+  function openSection(id) {
+
+    const sections = document.querySelectorAll('.pain-section');
+
+    sections.forEach(function(section) {
+      section.classList.remove('active');
+    });
+
+    const selected = document.getElementById(id);
+
+    selected.classList.add('active');
+
+    setTimeout(function() {
+      selected.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, 100);
+  }
+
+
+  function closeSection(id) {
+
+    document.getElementById(id).classList.remove('active');
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
+</script>
 
 </body>
 </html>
