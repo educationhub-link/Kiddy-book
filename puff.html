@@ -1,1 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Puff Calculation | Kiddy Book</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fffaf7;
+      color: #493d38;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+      padding: 22px 18px 45px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #eaf7ff, #dff3ff);
+      border-radius: 30px;
+      padding: 30px 20px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .header .emoji {
+      font-size: 55px;
+    }
+
+    .header h1 {
+      margin: 10px 0 5px;
+      font-size: 38px;
+      color: #386b85;
+    }
+
+    .header p {
+      margin: 0;
+      color: #718994;
+      font-size: 18px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .page-title h2 {
+      margin: 0;
+      color: #36729c;
+      font-size: 31px;
+    }
+
+    .page-title p {
+      color: #777;
+      margin-top: 8px;
+    }
+
+    .card {
+      background: white;
+      border: 2px solid #dde9ee;
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.04);
+    }
+
+    .formula-card {
+      background: #f5fbff;
+      border-color: #a8d4ee;
+      text-align: center;
+    }
+
+    .formula-label {
+      display: inline-block;
+      background: #4aa5d8;
+      color: white;
+      font-weight: bold;
+      padding: 8px 18px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+    }
+
+    .formula {
+      font-size: 26px;
+      font-weight: bold;
+      color: #245b7d;
+      line-height: 1.5;
+    }
+
+    .rounding {
+      margin-top: 14px;
+      font-size: 16px;
+      color: #666;
+      font-weight: bold;
+    }
+
+    .case-card h3 {
+      margin-top: 0;
+      color: #36729c;
+      font-size: 23px;
+    }
+
+    .case-info {
+      line-height: 1.7;
+      font-size: 17px;
+      margin-bottom: 16px;
+    }
+
+    .question {
+      background: #f8fbfd;
+      border-radius: 16px;
+      padding: 16px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .calculation {
+      background: #eef8fd;
+      border: 2px dashed #8ec8e8;
+      border-radius: 16px;
+      padding: 17px;
+      text-align: center;
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    .answer {
+      margin-top: 10px;
+      font-size: 25px;
+      font-weight: bold;
+      color: #21648a;
+    }
+
+    .practice {
+      background: #fff9fb;
+      border-color: #ffc5d3;
+    }
+
+    .practice h3 {
+      color: #dd4f75;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    input {
+      flex: 1;
+      min-width: 0;
+      font-size: 18px;
+      padding: 14px;
+      border-radius: 14px;
+      border: 2px solid #e6d9d4;
+    }
+
+    button {
+      border: none;
+      background: #ff5f83;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      padding: 14px 18px;
+      border-radius: 14px;
+      cursor: pointer;
+    }
+
+    #feedback {
+      display: none;
+      margin-top: 15px;
+      padding: 14px;
+      border-radius: 14px;
+      line-height: 1.6;
+      font-weight: bold;
+    }
+
+    .correct {
+      display: block !important;
+      background: #e9f8ec;
+      color: #24753b;
+    }
+
+    .incorrect {
+      display: block !important;
+      background: #fff0f0;
+      color: #b53c3c;
+    }
+
+    .reminder {
+      background: #fffdf4;
+      border-color: #f1df9d;
+    }
+
+    .reminder h3 {
+      color: #9f7b14;
+    }
+
+    .reminder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .reminder-item {
+      background: white;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .reminder-icon {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .note {
+      background: #f6f2ff;
+      border: 1px solid #dfd5f4;
+      border-radius: 18px;
+      padding: 17px;
+      margin-top: 20px;
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: center;
+      color: #665a72;
+    }
+
+    .back {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: #f0e7e1;
+      color: #604d45;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 520px) {
+      .header h1 {
+        font-size: 32px;
+      }
+
+      .page-title h2 {
+        font-size: 27px;
+      }
+
+      .formula {
+        font-size: 22px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .reminder-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .input-row {
+        flex-direction: column;
+      }
+
+      input,
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header class="header">
+      <div class="emoji">💨</div>
+      <h1>Kiddy Book</h1>
+      <p>Paediatric Quick Reference</p>
+    </header>
+
+    <div class="page-title">
+      <h2>💨 Puff Calculation</h2>
+      <p>Quick Reference</p>
+    </div>
+
+    <section class="card formula-card">
+      <div class="formula-label">FORMULA</div>
+
+      <div class="formula">
+        0.3 × Weight (kg) = Number of Puffs
+      </div>
+
+      <div class="rounding">
+        Round the calculated result to the nearest whole puff.
+      </div>
+    </section>
+
+    <section class="card case-card">
+      <h3>👦 Child C</h3>
+
+      <div class="case-info">
+        <strong>Sex:</strong> Male<br>
+        <strong>Age:</strong> 1 year 11 months<br>
+        <strong>Weight:</strong> 10.5 kg<br>
+        <strong>Diagnosis:</strong> Bronchiolitis
+      </div>
+
+      <div class="question">
+        Dr ordered <strong>Salbutamol 100 mcg inhaler</strong>,
+        inhalation every 4 hourly.
+        <br><br>
+        How many puffs should be given?
+      </div>
+
+      <div class="calculation">
+        0.3 × 10.5 = <strong>3.15 puffs</strong>
+
+        <div class="answer">
+          → Rounded answer: 3 puffs
+        </div>
+      </div>
+    </section>
+
+    <section class="card case-card">
+      <h3>👦 Child D</h3>
+
+      <div class="case-info">
+        <strong>Sex:</strong> Male<br>
+        <strong>Age:</strong> 2 years 6 months<br>
+        <strong>Weight:</strong> 11.4 kg<br>
+        <strong>Diagnosis:</strong> Bronchitis
+      </div>
+
+      <div class="question">
+        Dr ordered <strong>Salbutamol 100 mcg inhaler</strong>,
+        inhalation every 4 hourly.
+        <br><br>
+        How many puffs should be given?
+      </div>
+
+      <div class="calculation">
+        0.3 × 11.4 = <strong>3.42 puffs</strong>
+
+        <div class="answer">
+          → Rounded answer: 3 puffs
+        </div>
+      </div>
+    </section>
+
+    <section class="card case-card">
+      <h3>👧 Child E</h3>
+
+      <div class="case-info">
+        <strong>Sex:</strong> Female<br>
+        <strong>Age:</strong> 3 years 7 months<br>
+        <strong>Weight:</strong> 13.4 kg<br>
+        <strong>Diagnosis:</strong> URTI
+      </div>
+
+      <div class="question">
+        Dr ordered <strong>Salbutamol 100 mcg inhaler</strong>,
+        inhalation every 4 hourly.
+        <br><br>
+        How many puffs should be given?
+      </div>
+
+      <div class="calculation">
+        0.3 × 13.4 = <strong>4.02 puffs</strong>
+
+        <div class="answer">
+          → Rounded answer: 4 puffs
+        </div>
+      </div>
+    </section>
+
+    <section class="card practice">
+      <h3>✏️ Try It Yourself</h3>
+
+      <p>
+        A child weighs <strong>12 kg</strong>.
+        Using the puff calculation formula, how many puffs should be given?
+      </p>
+
+      <div class="input-row">
+        <input
+          id="answer"
+          type="number"
+          inputmode="numeric"
+          placeholder="Enter number of puffs"
+        >
+
+        <button onclick="checkAnswer()">
+          Check Answer
+        </button>
+      </div>
+
+      <div id="feedback"></div>
+    </section>
+
+    <section class="card reminder">
+      <h3>💡 Good Practice Reminders</h3>
+
+      <div class="reminder-grid">
+
+        <div class="reminder-item">
+          <span class="reminder-icon">⚖️</span>
+          Confirm the child's current weight.
+        </div>
+
+        <div class="reminder-item">
+          <span class="reminder-icon">💨</span>
+          Check the prescribed inhaler and order.
+        </div>
+
+        <div class="reminder-item">
+          <span class="reminder-icon">🧮</span>
+          Calculate carefully before rounding.
+        </div>
+
+        <div class="reminder-item">
+          <span class="reminder-icon">💬</span>
+          When in doubt, ask and clarify.
+        </div>
+
+      </div>
+    </section>
+
+    <div class="note">
+      Information adapted from KKH resources.
+      <br>
+      For educational purposes only.
+      Do not distribute.
+      <br><br>
+      Always verify medication orders and follow local clinical policy.
+    </div>
+
+    <a class="back" href="index.html">
+      ← Back to Kiddy Book
+    </a>
+
+  </main>
+
+  <script>
+    function checkAnswer() {
+      const input = document.getElementById("answer");
+      const feedback = document.getElementById("feedback");
+      const answer = parseFloat(input.value);
+
+      feedback.className = "";
+
+      if (isNaN(answer)) {
+        feedback.textContent = "💨 Enter your answer first.";
+        feedback.classList.add("incorrect");
+        return;
+      }
+
+      if (answer === 4) {
+        feedback.innerHTML =
+          "🎉 Correct!<br><br>" +
+          "0.3 × 12 kg = 3.6 puffs<br>" +
+          "Rounded to the nearest whole puff = <strong>4 puffs</strong>";
+
+        feedback.classList.add("correct");
+      } else {
+        feedback.innerHTML =
+          "💭 Not quite. Try again!<br><br>" +
+          "Hint: Calculate <strong>0.3 × 12 kg</strong> first, " +
+          "then round the result to the nearest whole puff.";
+
+        feedback.classList.add("incorrect");
+      }
+    }
+  </script>
+
+</body>
+</html>
