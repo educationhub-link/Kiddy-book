@@ -1,1 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Expressed Breast Milk | Kiddy Book</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fffaf7;
+      color: #493d38;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 22px 18px 45px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #fff1f6, #eef9ff);
+      border-radius: 30px;
+      padding: 30px 20px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .header .emoji {
+      font-size: 55px;
+    }
+
+    .header h1 {
+      margin: 10px 0 5px;
+      font-size: 38px;
+      color: #b24f73;
+    }
+
+    .header p {
+      margin: 0;
+      color: #85747d;
+      font-size: 18px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .page-title h2 {
+      margin: 0;
+      color: #bc4f75;
+      font-size: 31px;
+    }
+
+    .page-title p {
+      margin-top: 8px;
+      color: #777;
+    }
+
+    .intro {
+      background: white;
+      border: 2px solid #efd9e2;
+      border-radius: 24px;
+      padding: 22px;
+      margin-bottom: 20px;
+      line-height: 1.65;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.04);
+    }
+
+    .intro h3 {
+      margin-top: 0;
+      color: #b24f73;
+    }
+
+    details {
+      background: white;
+      border: 2px solid #eadfda;
+      border-radius: 22px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.035);
+    }
+
+    summary {
+      padding: 19px 20px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      list-style: none;
+      color: #51443f;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "＋";
+      float: right;
+      color: #c55f82;
+      font-size: 23px;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    .content {
+      padding: 0 20px 22px;
+      line-height: 1.65;
+    }
+
+    .content ul,
+    .content ol {
+      padding-left: 22px;
+    }
+
+    .content li {
+      margin-bottom: 10px;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 620px;
+      background: white;
+    }
+
+    th,
+    td {
+      border: 1px solid #cfd6d9;
+      padding: 14px 12px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    th {
+      background: #eaf8f7;
+      color: #287d80;
+      font-size: 16px;
+    }
+
+    td strong {
+      color: #493d38;
+    }
+
+    .important {
+      background: #fff0f2;
+      border: 2px solid #efb9c4;
+    }
+
+    .important summary {
+      color: #c44363;
+    }
+
+    .label-box {
+      background: #fff4f7;
+      border: 2px dashed #e9a8b8;
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+      font-size: 18px;
+      line-height: 1.6;
+      font-weight: bold;
+      color: #9d4560;
+    }
+
+    .problem-card {
+      border-radius: 18px;
+      padding: 17px;
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    .sore {
+      background: #fff4f6;
+      border: 1px solid #efc5cf;
+    }
+
+    .engorgement {
+      background: #fff9ec;
+      border: 1px solid #ead7a2;
+    }
+
+    .blocked {
+      background: #f2f8ff;
+      border: 1px solid #c9dff2;
+    }
+
+    .problem-card h4 {
+      margin-top: 0;
+      font-size: 20px;
+    }
+
+    .warning-box {
+      background: #c44567;
+      color: white;
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 18px;
+      line-height: 1.6;
+      font-weight: bold;
+    }
+
+    .reminder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .reminder-item {
+      background: #fffdf7;
+      border: 1px solid #ede0b8;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .reminder-item span {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .note {
+      background: #f6f2ff;
+      border: 1px solid #dfd5f4;
+      border-radius: 18px;
+      padding: 17px;
+      margin-top: 22px;
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: center;
+      color: #665a72;
+    }
+
+    .back {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: #f0e7e1;
+      color: #604d45;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 520px) {
+      .header h1 {
+        font-size: 32px;
+      }
+
+      .page-title h2 {
+        font-size: 27px;
+      }
+
+      .reminder-grid {
+        grid-template-columns: 1fr;
+      }
+
+      summary {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header class="header">
+      <div class="emoji">🍼</div>
+      <h1>Kiddy Book</h1>
+      <p>Paediatric Quick Reference</p>
+    </header>
+
+    <div class="page-title">
+      <h2>🍼 Expressed Breast Milk (EBM)</h2>
+      <p>Storage • Handling • Breastfeeding Care</p>
+    </div>
+
+    <section class="intro">
+      <h3>💗 EBM Quick Guide</h3>
+
+      Expressed breast milk should be stored, thawed, warmed and labelled
+      carefully to maintain safe handling and appropriate use.
+
+      <br><br>
+
+      Use clean containers or milk storage bags and always follow your
+      institution's current policy.
+    </section>
+
+
+    <!-- STORAGE TABLE -->
+
+    <details open>
+      <summary>🧊 EBM Storage Guide</summary>
+
+      <div class="content">
+
+        <div class="table-wrap">
+          <table>
+
+            <thead>
+              <tr>
+                <th>Type of EBM</th>
+                <th>Temperature</th>
+                <th>Storage Duration</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td>
+                  <strong>Fresh EBM</strong><br>
+                  @ Room Temperature
+                </td>
+                <td>25°C</td>
+                <td>4 Hours</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <strong>Fresh EBM</strong><br>
+                  @ Refrigerator
+                </td>
+                <td>4°C</td>
+                <td>48 Hours</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <strong>Frozen EBM</strong><br>
+                  @ Freezer
+                </td>
+                <td>-5°C to -15°C</td>
+                <td>3 to 6 Months</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <strong>Frozen EBM</strong><br>
+                  @ Deep Freezer
+                </td>
+                <td>-18°C or lower</td>
+                <td>6 to 12 Months</td>
+              </tr>
+
+            </tbody>
+
+          </table>
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- THAWING -->
+
+    <details>
+      <summary>❄️ Thawing Frozen EBM</summary>
+
+      <div class="content">
+
+        <ol>
+          <li>
+            Frozen EBM should preferably be thawed in the refrigerator.
+          </li>
+
+          <li>
+            Transfer frozen EBM into the refrigerator at least
+            <strong>12 hours earlier</strong>.
+          </li>
+
+          <li>
+            Frozen EBM of about <strong>50 mL</strong> usually takes
+            approximately <strong>12 hours</strong> to completely thaw
+            in the refrigerator.
+          </li>
+
+          <li>
+            Use thawed EBM within <strong>36 hours</strong> from the time
+            of transfer from freezer to refrigerator
+            <strong>(12 + 24 hours)</strong>.
+          </li>
+
+          <li>
+            For quick thawing, place the bottle of frozen EBM in a warmer
+            at <strong>40°C for 10 minutes</strong>.
+          </li>
+
+          <li>
+            EBM thawed in a warmer must be used within
+            <strong>1 hour</strong>.
+          </li>
+        </ol>
+
+        <ul>
+          <li>Do not thaw EBM at room temperature.</li>
+          <li>Do not refreeze EBM that has been thawed.</li>
+
+          <li>
+            Completely thawed or more than 50% thawed frozen EBM brought
+            into the ward should be stored in the refrigerator and used
+            within <strong>24 hours</strong>.
+          </li>
+
+          <li>
+            Frozen colostrum in syringes usually thaws within
+            <strong>1–2 hours</strong> in the refrigerator and should be
+            used within <strong>24 hours</strong> from the time of transfer
+            from freezer to refrigerator.
+          </li>
+        </ul>
+
+      </div>
+    </details>
+
+
+    <!-- WARMING -->
+
+    <details>
+      <summary>♨️ Warming EBM</summary>
+
+      <div class="content">
+
+        <ol>
+          <li>
+            Warm EBM from the refrigerator in a warmer at
+            <strong>40°C for 10 minutes</strong>.
+          </li>
+
+          <li>
+            Use EBM within <strong>1 hour</strong> after warming.
+          </li>
+
+          <li>
+            Do not microwave or heat EBM directly on the stove.
+          </li>
+
+          <li>
+            Small amounts of colostrum in syringes may be fed
+            without warming.
+          </li>
+        </ol>
+
+        <p>
+          <strong>Note:</strong>
+          Freshly expressed breast milk can be stored in a cooler bag
+          with ice packs for <strong>24 hours</strong>.
+        </p>
+
+      </div>
+    </details>
+
+
+    <!-- LABEL -->
+
+    <details>
+      <summary>🏷️ Label Your EBM</summary>
+
+      <div class="content">
+
+        <div class="label-box">
+          Do not forget to label your EBM with
+          <br><br>
+          📅 <strong>Date</strong>
+          &nbsp;&nbsp; • &nbsp;&nbsp;
+          🕒 <strong>Time</strong>
+          &nbsp;&nbsp; • &nbsp;&nbsp;
+          🍼 <strong>Volume</strong>
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- BREASTFEEDING PROBLEMS -->
+
+    <details>
+      <summary>🤱 Common Breastfeeding Problems</summary>
+
+      <div class="content">
+
+
+        <div class="problem-card sore">
+
+          <h4>🌸 Sore Nipples</h4>
+
+          Sore nipples can be prevented by ensuring proper positioning
+          and latching during breastfeeding.
+
+          <ul>
+            <li>
+              After feeding, express a little milk onto the nipples
+              and allow them to air dry.
+            </li>
+
+            <li>
+              Going without a bra for short intervals each day may help.
+            </li>
+
+            <li>
+              If soreness persists, temporarily express breast milk
+              6 to 8 times a day and feed the expressed milk to the baby.
+            </li>
+
+            <li>
+              Seek help as soon as possible if the problem persists.
+            </li>
+          </ul>
+
+        </div>
+
+
+        <div class="problem-card engorgement">
+
+          <h4>🌼 Engorgement</h4>
+
+          Engorgement is the accumulation of milk in the breasts,
+          resulting in hardness, overdistension, discomfort or pain.
+
+          <br><br>
+
+          It may be minimised through demand feeding, including night
+          feeding and early feeding from birth.
+
+          <ul>
+            <li>
+              Massage the nipple, areola and breast to help clear blockage.
+            </li>
+
+            <li>
+              Apply cold towels or cabbage leaves on the breasts between
+              feeds to reduce swelling.
+            </li>
+
+            <li>
+              Express breast milk before and after each feed if needed.
+            </li>
+
+            <li>
+              Analgesia may be used as prescribed or advised to relieve pain.
+            </li>
+          </ul>
+
+        </div>
+
+
+        <div class="problem-card blocked">
+
+          <h4>💧 Blocked Milk Ducts</h4>
+
+          Blocked ducts occur when milk is not being emptied efficiently.
+          Part of the breast may feel lumpy, hard or sore.
+
+          <ul>
+            <li>
+              Gently massage the nipple, areola and affected area
+              before feeding.
+            </li>
+
+            <li>
+              Apply cold towels or cabbage leaves on the affected area.
+            </li>
+
+            <li>
+              Change the feeding position, for example using a football hold.
+            </li>
+          </ul>
+
+        </div>
+
+
+        <div class="warning-box">
+
+          🚨 Seek medical attention promptly if any part of the breast
+          becomes red and/or painful, or if the mother feels shivery
+          or feverish.
+
+          <br><br>
+
+          This may indicate a breast infection.
+
+          <br><br>
+
+          Continue breastfeeding or emptying the affected breast where
+          appropriate to maintain milk supply, and seek advice from the
+          doctor or lactation consultant.
+
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- GOOD PRACTICE -->
+
+    <details>
+      <summary>💡 Good Practice Reminders</summary>
+
+      <div class="content">
+
+        <div class="reminder-grid">
+
+          <div class="reminder-item">
+            <span>🧼</span>
+            Wash hands before expressing or handling EBM.
+          </div>
+
+          <div class="reminder-item">
+            <span>🍼</span>
+            Use clean equipment and suitable EBM containers.
+          </div>
+
+          <div class="reminder-item">
+            <span>🏷️</span>
+            Label EBM clearly with date, time and volume.
+          </div>
+
+          <div class="reminder-item">
+            <span>❄️</span>
+            Store EBM correctly and follow the recommended storage duration.
+          </div>
+
+          <div class="reminder-item">
+            <span>🕒</span>
+            Follow the “First In, First Out” principle.
+          </div>
+
+        </div>
+
+      </div>
+    </details>
+
+
+    <div class="note">
+      📖 Information adapted from KKH Lactation Services and
+      supplied KKH resources.
+      <br><br>
+      For educational purposes only. Do not distribute.
+      <br><br>
+      Always follow current hospital policies and clinical judgement.
+    </div>
+
+
+    <a class="back" href="index.html">
+      ← Back to Kiddy Book
+    </a>
+
+  </main>
+
+</body>
+</html>
