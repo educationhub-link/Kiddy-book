@@ -1,1 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Gastroenteritis | Kiddy Book</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fffaf7;
+      color: #493d38;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 22px 18px 45px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #f1fff2, #eef9ff);
+      border-radius: 30px;
+      padding: 30px 20px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .header .emoji {
+      font-size: 55px;
+    }
+
+    .header h1 {
+      margin: 10px 0 5px;
+      font-size: 38px;
+      color: #3e7d5c;
+    }
+
+    .header p {
+      margin: 0;
+      color: #74827b;
+      font-size: 18px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .page-title h2 {
+      margin: 0;
+      color: #38835b;
+      font-size: 31px;
+    }
+
+    .page-title p {
+      color: #777;
+      margin-top: 8px;
+    }
+
+    .intro {
+      background: white;
+      border: 2px solid #d8eadf;
+      border-radius: 24px;
+      padding: 22px;
+      margin-bottom: 20px;
+      line-height: 1.65;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.04);
+    }
+
+    .intro h3 {
+      margin-top: 0;
+      color: #38835b;
+    }
+
+    .highlight {
+      background: #eff9f2;
+      border-left: 5px solid #65a978;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 15px;
+      line-height: 1.5;
+    }
+
+    details {
+      background: white;
+      border: 2px solid #e2e4df;
+      border-radius: 22px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.035);
+    }
+
+    summary {
+      padding: 19px 20px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      list-style: none;
+      color: #51443f;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "＋";
+      float: right;
+      color: #5b9a70;
+      font-size: 23px;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    .content {
+      padding: 0 20px 22px;
+      line-height: 1.65;
+    }
+
+    .content ul,
+    .content ol {
+      padding-left: 22px;
+    }
+
+    .content li {
+      margin-bottom: 10px;
+    }
+
+    .symptom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .symptom {
+      background: #f5fbf7;
+      border: 1px solid #d2e8d8;
+      border-radius: 15px;
+      padding: 14px;
+      text-align: center;
+      line-height: 1.45;
+    }
+
+    .dehydration-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .dehydration-sign {
+      background: #fff8e8;
+      border: 1px solid #ead7a5;
+      border-radius: 15px;
+      padding: 14px;
+      text-align: center;
+      line-height: 1.45;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      background: white;
+    }
+
+    th,
+    td {
+      border: 1px solid #d3d3d3;
+      padding: 11px 10px;
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.4;
+    }
+
+    th {
+      font-size: 15px;
+    }
+
+    .mild-head {
+      background: #edf8ed;
+      color: #387b40;
+    }
+
+    .moderate-head {
+      background: #fff7df;
+      color: #a26d19;
+    }
+
+    .severe-head {
+      background: #fff0f0;
+      color: #bd3e3e;
+    }
+
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .strategy-card {
+      border-radius: 18px;
+      padding: 17px;
+      line-height: 1.55;
+    }
+
+    .no-dehydration {
+      background: #f2faf2;
+      border: 1px solid #c3dec5;
+    }
+
+    .mild-moderate {
+      background: #fff9e9;
+      border: 1px solid #ead7a2;
+    }
+
+    .severe {
+      background: #fff0f0;
+      border: 1px solid #e8b5b5;
+    }
+
+    .strategy-card h4 {
+      margin-top: 0;
+      text-align: center;
+      font-size: 19px;
+    }
+
+    .flow-arrow {
+      text-align: center;
+      font-size: 25px;
+      margin: 8px 0;
+    }
+
+    .feeding-card {
+      border-radius: 17px;
+      padding: 17px;
+      margin-top: 12px;
+      line-height: 1.6;
+    }
+
+    .infant {
+      background: #fff5f9;
+      border: 1px solid #efc9d8;
+    }
+
+    .older {
+      background: #f3f8ff;
+      border: 1px solid #cbdced;
+    }
+
+    .medication {
+      background: #f7f3ff;
+      border: 2px solid #d7caec;
+    }
+
+    .medication summary {
+      color: #74569f;
+    }
+
+    .danger {
+      background: #fff1f1;
+      border: 2px solid #e9b1b1;
+    }
+
+    .danger summary {
+      color: #bd4040;
+    }
+
+    .warning-box {
+      background: #c84949;
+      color: white;
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 16px;
+      line-height: 1.6;
+      font-weight: bold;
+    }
+
+    .note-box {
+      background: #fff7df;
+      border: 1px solid #ead49a;
+      border-radius: 16px;
+      padding: 15px;
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    .note {
+      background: #f6f2ff;
+      border: 1px solid #dfd5f4;
+      border-radius: 18px;
+      padding: 17px;
+      margin-top: 22px;
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: center;
+      color: #665a72;
+    }
+
+    .back {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: #f0e7e1;
+      color: #604d45;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 680px) {
+      .strategy-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .header h1 {
+        font-size: 32px;
+      }
+
+      .page-title h2 {
+        font-size: 27px;
+      }
+
+      .symptom-grid,
+      .dehydration-grid {
+        grid-template-columns: 1fr;
+      }
+
+      summary {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header class="header">
+      <div class="emoji">🦠</div>
+      <h1>Kiddy Book</h1>
+      <p>Paediatric Quick Reference</p>
+    </header>
+
+    <div class="page-title">
+      <h2>🦠 Gastroenteritis</h2>
+      <p>Recognise • Rehydrate • Recover</p>
+    </div>
+
+
+    <!-- INTRODUCTION -->
+
+    <section class="intro">
+
+      <h3>💚 What is Gastroenteritis?</h3>
+
+      Gastroenteritis is an infection of the gastrointestinal tract
+      associated with diarrhoea, usually involving frequent passage of
+      loose or watery stools.
+
+      <br><br>
+
+      Acute gastroenteritis may present with an increase in stool frequency,
+      typically <strong>3 or more times in 24 hours</strong>, with or without
+      vomiting or fever.
+
+      <div class="highlight">
+        The main clinical concern in children with gastroenteritis is
+        <strong>dehydration</strong>.
+      </div>
+
+    </section>
+
+
+    <!-- CAUSES -->
+
+    <details>
+      <summary>🦠 Causes of Gastroenteritis</summary>
+
+      <div class="content">
+
+        Gastroenteritis is commonly caused by infection.
+
+        <br><br>
+
+        Causes may include:
+
+        <ul>
+          <li>
+            <strong>Viral:</strong> Rotavirus, Norovirus and Astrovirus
+          </li>
+
+          <li>
+            <strong>Bacterial:</strong> Salmonella, Campylobacter,
+            Escherichia coli and Shigella
+          </li>
+
+          <li>
+            <strong>Intestinal parasites</strong> in selected cases
+          </li>
+        </ul>
+
+        Viral infection is a common cause of gastroenteritis in children.
+
+      </div>
+    </details>
+
+
+    <!-- CLINICAL -->
+
+    <details>
+      <summary>🤢 Clinical Presentation</summary>
+
+      <div class="content">
+
+        <div class="symptom-grid">
+
+          <div class="symptom">💩 Watery diarrhoea</div>
+          <div class="symptom">🤮 Vomiting</div>
+          <div class="symptom">🌡️ Fever</div>
+          <div class="symptom">😣 Abdominal cramps</div>
+          <div class="symptom">💧 Dehydration</div>
+          <div class="symptom">⚡ Electrolyte imbalance</div>
+
+        </div>
+
+        <br>
+
+        Vomiting may occur early in the illness and diarrhoea may continue
+        for several days.
+
+      </div>
+    </details>
+
+
+    <!-- DEHYDRATION SIGNS -->
+
+    <details class="danger">
+      <summary>💧 How to Tell if a Child Is Dehydrated</summary>
+
+      <div class="content">
+
+        Features that may suggest dehydration include:
+
+        <div class="dehydration-grid">
+
+          <div class="dehydration-sign">
+            🚽 <strong>Reduced urine output</strong>
+            <br><br>
+            Not passing urine for about 6 hours or more
+          </div>
+
+          <div class="dehydration-sign">
+            ⚖️ <strong>Loss of weight</strong>
+          </div>
+
+          <div class="dehydration-sign">
+            😴 <strong>Lethargy</strong>
+          </div>
+
+          <div class="dehydration-sign">
+            👄 <strong>Dry tongue, eyes or lips</strong>
+          </div>
+
+          <div class="dehydration-sign">
+            💓 <strong>Increased heart rate</strong>
+          </div>
+
+          <div class="dehydration-sign">
+            😢 <strong>Reduced or absent tears</strong>
+          </div>
+
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- HYDRATION ASSESSMENT -->
+
+    <details open>
+      <summary>📊 Assessment of Hydration Status</summary>
+
+      <div class="content">
+
+        <div class="table-wrap">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Assessment</th>
+                <th class="mild-head">Mild Dehydration<br>3–5%</th>
+                <th class="moderate-head">Moderate Dehydration<br>6–9%</th>
+                <th class="severe-head">Severe Dehydration<br>&gt;10%</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <td><strong>General condition</strong></td>
+                <td>Alert, thirsty</td>
+                <td>Thirsty, restless or lethargic / irritable</td>
+                <td>Drowsy, floppy or unconscious</td>
+              </tr>
+
+              <tr>
+                <td><strong>Eyes</strong></td>
+                <td>Normal</td>
+                <td>Sunken</td>
+                <td>Very sunken and dry</td>
+              </tr>
+
+              <tr>
+                <td><strong>Tears</strong></td>
+                <td>Present</td>
+                <td>Absent</td>
+                <td>Absent</td>
+              </tr>
+
+              <tr>
+                <td><strong>Mouth / Tongue</strong></td>
+                <td>Moist</td>
+                <td>Dry</td>
+                <td>Very dry</td>
+              </tr>
+
+              <tr>
+                <td><strong>Capillary refill</strong></td>
+                <td>Normal</td>
+                <td>Prolonged &gt;2 seconds</td>
+                <td>Prolonged &gt;2 seconds</td>
+              </tr>
+
+              <tr>
+                <td><strong>Skin turgor</strong></td>
+                <td>Instant recoil</td>
+                <td>Recoil in &gt;2 seconds</td>
+                <td>Recoil in &gt;2 seconds</td>
+              </tr>
+
+              <tr>
+                <td><strong>Skin</strong></td>
+                <td>Normal</td>
+                <td>Normal</td>
+                <td>Cold, clammy or mottled</td>
+              </tr>
+
+              <tr>
+                <td><strong>Fontanelle</strong></td>
+                <td>Normal</td>
+                <td>Sunken</td>
+                <td>Very sunken</td>
+              </tr>
+
+              <tr>
+                <td><strong>Urine</strong></td>
+                <td>Normal</td>
+                <td>Reduced amount</td>
+                <td>Anuria / severe oliguria</td>
+              </tr>
+
+              <tr>
+                <td><strong>Pulse</strong></td>
+                <td>Normal rate and volume</td>
+                <td>Rapid and weak</td>
+                <td>Rapid and feeble</td>
+              </tr>
+
+              <tr>
+                <td><strong>Blood pressure</strong></td>
+                <td>Normal</td>
+                <td>Normal / low</td>
+                <td>Low / unrecordable</td>
+              </tr>
+
+              <tr>
+                <td><strong>Respiration</strong></td>
+                <td>Normal</td>
+                <td>Deep / may be rapid</td>
+                <td>Deep and rapid</td>
+              </tr>
+
+              <tr>
+                <td><strong>Weight loss</strong></td>
+                <td>3–5%</td>
+                <td>6–9%</td>
+                <td>≥10%</td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+        <div class="note-box">
+          If uncertain between categories, manage according to the
+          <strong>more severe category</strong> and follow current institutional
+          guidance.
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- REHYDRATION -->
+
+    <details>
+      <summary>🧃 Rehydration Strategy</summary>
+
+      <div class="content">
+
+        <div class="strategy-grid">
+
+          <div class="strategy-card no-dehydration">
+
+            <h4>✅ No Dehydration</h4>
+
+            <ul>
+              <li>Encourage increased fluid intake.</li>
+
+              <li>
+                Oral rehydration solution (ORS) may be used where appropriate.
+              </li>
+
+              <li>
+                Continue usual age-appropriate diet and feeds.
+              </li>
+
+              <li>
+                Continue breastfeeding or formula feeding.
+              </li>
+            </ul>
+
+          </div>
+
+
+          <div class="strategy-card mild-moderate">
+
+            <h4>💧 Mild / Moderate</h4>
+
+            <ul>
+              <li>
+                Enteral rehydration with ORS is preferred where tolerated.
+              </li>
+
+              <li>
+                The supplied reference describes an ORS fluid challenge of
+                <strong>50 mL/kg over the first 4 hours</strong>.
+              </li>
+
+              <li>
+                Supplement with usual oral fluids if the child refuses
+                sufficient ORS.
+              </li>
+
+              <li>
+                Monitor response to rehydration.
+              </li>
+            </ul>
+
+          </div>
+
+
+          <div class="strategy-card severe">
+
+            <h4>🚨 Severe Dehydration</h4>
+
+            <ul>
+              <li>
+                Treat as an emergency.
+              </li>
+
+              <li>
+                The supplied reference describes
+                <strong>0.9% sodium chloride 20 mL/kg IV bolus</strong>
+                for severe dehydration / shock.
+              </li>
+
+              <li>
+                If the child remains shocked, reassess promptly and follow
+                the current emergency escalation pathway.
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+
+        <div class="note-box">
+          ⚠️ Always follow the current institutional paediatric rehydration
+          and IV fluid guideline.
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- FEEDING -->
+
+    <details>
+      <summary>🍽️ Diet & Feeding</summary>
+
+      <div class="content">
+
+        <div class="feeding-card infant">
+
+          <strong>👶 Infants</strong>
+
+          <ul>
+            <li>
+              Continue breastfeeding and offer feeds more frequently.
+            </li>
+
+            <li>
+              Formula-fed infants may continue their usual formula if
+              vomiting is not present.
+            </li>
+
+            <li>
+              Do not feed the baby with water alone.
+            </li>
+
+            <li>
+              After significant loose or watery stools, oral rehydration
+              fluid may be given according to the child's weight and
+              institutional guidance.
+            </li>
+
+            <li>
+              If diarrhoea is prolonged, medical review may be required
+              regarding possible secondary lactose intolerance.
+            </li>
+          </ul>
+
+        </div>
+
+
+        <div class="feeding-card older">
+
+          <strong>🧒 Older Children</strong>
+
+          <ul>
+            <li>
+              Continue adequate fluid intake.
+            </li>
+
+            <li>
+              Usual age-appropriate diet may generally be continued.
+            </li>
+
+            <li>
+              Soft foods such as porridge, bread, biscuits, soup or mashed
+              potatoes may be offered if preferred.
+            </li>
+
+            <li>
+              Avoid fatty or fried foods during recovery.
+            </li>
+
+            <li>
+              Limit excessive simple sugars such as undiluted fruit juice
+              and carbonated drinks.
+            </li>
+          </ul>
+
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- VOMITING HOME CARE -->
+
+    <details>
+      <summary>🤮 If the Child Is Vomiting</summary>
+
+      <div class="content">
+
+        <ul>
+          <li>
+            Offer small amounts of fluid at frequent intervals.
+          </li>
+
+          <li>
+            Once vomiting has settled, gradually restart normal feeds.
+          </li>
+
+          <li>
+            For breastfed infants, smaller and more frequent feeds may be
+            better tolerated initially.
+          </li>
+
+          <li>
+            Older children may restart soft foods when tolerated.
+          </li>
+        </ul>
+
+        <div class="note-box">
+          Persistent vomiting or inability to tolerate small amounts of fluid
+          requires medical assessment.
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- INVESTIGATIONS -->
+
+    <details>
+      <summary>🧪 Investigations</summary>
+
+      <div class="content">
+
+        There is usually <strong>no need for investigations</strong>
+        if the child is clinically well and has normal hydration status.
+
+        <br><br>
+
+        For moderate or severe dehydration, investigations may include:
+
+        <ul>
+          <li>
+            Renal panel including electrolytes, urea and creatinine
+          </li>
+
+          <li>
+            Acid-base assessment where indicated
+          </li>
+
+          <li>
+            Stool culture or stool virology where clinically indicated
+          </li>
+
+          <li>
+            Septic work-up if indicated
+          </li>
+        </ul>
+
+      </div>
+    </details>
+
+
+    <!-- MEDICATION -->
+
+    <details class="medication">
+      <summary>💊 Medications</summary>
+
+      <div class="content">
+
+        The main treatment of uncomplicated gastroenteritis is
+        <strong>adequate hydration</strong>.
+
+        <br><br>
+
+        <ul>
+          <li>
+            Most children do not require specific medication.
+          </li>
+
+          <li>
+            Most bacterial gastroenteritis does not require antibiotics.
+          </li>
+
+          <li>
+            Antibiotics may be indicated in selected situations such as
+            bacterial dysentery, protozoal disease, very young infants,
+            immunocompromised children or septic patients.
+          </li>
+
+          <li>
+            Medication for vomiting or other symptoms should be used only
+            when prescribed or advised according to current institutional
+            practice.
+          </li>
+
+          <li>
+            Antimotility medicines should not be routinely used in children.
+          </li>
+        </ul>
+
+      </div>
+    </details>
+
+
+    <!-- PREVENTION -->
+
+    <details>
+      <summary>🧼 Prevention & Hygiene</summary>
+
+      <div class="content">
+
+        Good hygiene helps reduce the spread of gastroenteritis.
+
+        <ul>
+          <li>
+            Wash hands carefully and regularly.
+          </li>
+
+          <li>
+            Encourage children to wash their hands properly.
+          </li>
+
+          <li>
+            For newborn babies and infants, ensure good bottle hygiene.
+          </li>
+
+          <li>
+            Use appropriately cleaned and sterilised feeding equipment.
+          </li>
+
+          <li>
+            Follow safe food handling practices.
+          </li>
+        </ul>
+
+      </div>
+    </details>
+
+
+    <!-- SEEK MEDICAL ATTENTION -->
+
+    <details class="danger">
+      <summary>🚨 Seek Medical Attention If...</summary>
+
+      <div class="content">
+
+        Consult a doctor promptly if:
+
+        <ul>
+          <li>
+            The child shows signs of dehydration.
+          </li>
+
+          <li>
+            There is blood in the diarrhoea or vomitus.
+          </li>
+
+          <li>
+            Vomitus is greenish.
+          </li>
+
+          <li>
+            There is persistent or severe abdominal pain.
+          </li>
+
+          <li>
+            Vomiting is persistent and the child cannot tolerate small
+            amounts of fluid.
+          </li>
+
+          <li>
+            The child appears pale, lethargic or increasingly unwell.
+          </li>
+
+          <li>
+            There is painful abdominal swelling.
+          </li>
+
+          <li>
+            Fever persists for more than 5 days.
+          </li>
+        </ul>
+
+        <div class="warning-box">
+          🚨 Severe dehydration, altered consciousness, shock or significant
+          deterioration requires urgent medical assessment and escalation.
+        </div>
+
+      </div>
+    </details>
+
+
+    <div class="note">
+
+      📖 Information adapted from supplied KKH patient education resources
+      and KKH Baby Bear Book.
+
+      <br><br>
+
+      For educational purposes only. Do not distribute.
+
+      <br><br>
+
+      ⚠️ Always follow current institutional guidelines and the child's
+      individual clinical management plan.
+
+    </div>
+
+
+    <a class="back" href="index.html">
+      ← Back to Kiddy Book
+    </a>
+
+  </main>
+
+</body>
+</html>
