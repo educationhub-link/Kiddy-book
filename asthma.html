@@ -1,1 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Asthma in Children | Kiddy Book</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fffaf7;
+      color: #493d38;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 22px 18px 45px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #eef7ff, #e5f5f3);
+      border-radius: 30px;
+      padding: 30px 20px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .header .emoji {
+      font-size: 55px;
+    }
+
+    .header h1 {
+      margin: 10px 0 5px;
+      font-size: 38px;
+      color: #26648c;
+    }
+
+    .header p {
+      margin: 0;
+      color: #71838a;
+      font-size: 18px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .page-title h2 {
+      margin: 0;
+      color: #2374a8;
+      font-size: 31px;
+    }
+
+    .page-title p {
+      margin-top: 8px;
+      color: #777;
+    }
+
+    .intro {
+      background: white;
+      border: 2px solid #d7e7ee;
+      border-radius: 24px;
+      padding: 22px;
+      margin-bottom: 20px;
+      line-height: 1.65;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.04);
+    }
+
+    .intro h3 {
+      margin-top: 0;
+      color: #2374a8;
+    }
+
+    .symptom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .symptom {
+      background: #f6fbff;
+      border: 1px solid #d7e7ee;
+      border-radius: 15px;
+      padding: 14px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    details {
+      background: white;
+      border: 2px solid #e2e8ea;
+      border-radius: 22px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.035);
+    }
+
+    summary {
+      padding: 19px 20px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      list-style: none;
+      color: #43545b;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "＋";
+      float: right;
+      color: #3183a9;
+      font-size: 23px;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    .content {
+      padding: 0 20px 22px;
+      line-height: 1.65;
+    }
+
+    .content ul,
+    .content ol {
+      padding-left: 22px;
+    }
+
+    .content li {
+      margin-bottom: 10px;
+    }
+
+    .distress-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .distress-item {
+      background: #fff5f5;
+      border: 1px solid #f0cccc;
+      border-radius: 16px;
+      padding: 15px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .distress-item span {
+      display: block;
+      font-size: 29px;
+      margin-bottom: 7px;
+    }
+
+    .severity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .severity-card {
+      border-radius: 18px;
+      padding: 17px;
+      line-height: 1.55;
+    }
+
+    .severity-card h4 {
+      margin: 0 0 10px;
+      text-align: center;
+      font-size: 19px;
+    }
+
+    .mild {
+      background: #f1faef;
+      border: 1px solid #bedbb6;
+    }
+
+    .mild h4 {
+      color: #3b8034;
+    }
+
+    .moderate {
+      background: #fff9ea;
+      border: 1px solid #edd69a;
+    }
+
+    .moderate h4 {
+      color: #c27a17;
+    }
+
+    .severe {
+      background: #fff0f0;
+      border: 1px solid #efb6b6;
+    }
+
+    .severe h4 {
+      color: #c33d3d;
+    }
+
+    .medicine-card {
+      border-radius: 17px;
+      padding: 17px;
+      margin-top: 12px;
+    }
+
+    .reliever {
+      background: #eef8ff;
+      border: 1px solid #c7e0ef;
+    }
+
+    .controller {
+      background: #f5f2ff;
+      border: 1px solid #d9cef2;
+    }
+
+    .medicine-card h4 {
+      margin-top: 0;
+    }
+
+    .technique-step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: #f2fbfb;
+      border: 1px solid #cae8e7;
+      border-radius: 16px;
+      padding: 15px;
+      margin-bottom: 11px;
+    }
+
+    .step-number {
+      min-width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #22969d;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .algorithm-warning {
+      background: #fff7dc;
+      border: 2px solid #e6cb6e;
+      border-radius: 17px;
+      padding: 16px;
+      margin-bottom: 17px;
+      line-height: 1.6;
+      color: #665218;
+    }
+
+    .algorithm-row {
+      margin-bottom: 18px;
+      border-radius: 18px;
+      padding: 17px;
+    }
+
+    .algorithm-row h4 {
+      margin: 0 0 12px;
+      font-size: 20px;
+    }
+
+    .algorithm-arrow {
+      text-align: center;
+      font-size: 24px;
+      margin: 8px 0;
+    }
+
+    .review-box {
+      margin-top: 12px;
+      background: white;
+      border: 1px dashed #aaa;
+      border-radius: 13px;
+      padding: 13px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .discharge {
+      background: #effaf1;
+      border: 2px solid #b9dbbf;
+    }
+
+    .discharge summary {
+      color: #347544;
+    }
+
+    .danger {
+      background: #fff1f1;
+      border: 2px solid #e6aaaa;
+    }
+
+    .danger summary {
+      color: #bb3d3d;
+    }
+
+    .note {
+      background: #f6f2ff;
+      border: 1px solid #dfd5f4;
+      border-radius: 18px;
+      padding: 17px;
+      margin-top: 22px;
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: center;
+      color: #665a72;
+    }
+
+    .back {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: #f0e7e1;
+      color: #604d45;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 650px) {
+      .header h1 {
+        font-size: 32px;
+      }
+
+      .page-title h2 {
+        font-size: 27px;
+      }
+
+      .severity-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .symptom-grid,
+      .distress-grid {
+        grid-template-columns: 1fr;
+      }
+
+      summary {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header class="header">
+      <div class="emoji">🫁</div>
+      <h1>Kiddy Book</h1>
+      <p>Paediatric Quick Reference</p>
+    </header>
+
+    <div class="page-title">
+      <h2>🫁 Asthma in Children</h2>
+      <p>Recognise Early • Treat Promptly • Breathe Easier</p>
+    </div>
+
+
+    <!-- WHAT IS ASTHMA -->
+
+    <section class="intro">
+
+      <h3>💙 What is Asthma?</h3>
+
+      Asthma is a chronic inflammatory disease affecting the lower air
+      passages in the lungs.
+
+      <br><br>
+
+      Children with asthma have air passages that are
+      <strong>hyper-responsive or sensitive to triggers</strong>.
+      Asthma may present as recurrent episodes of:
+
+      <div class="symptom-grid">
+        <div class="symptom">💨 Wheezing</div>
+        <div class="symptom">😮‍💨 Breathlessness</div>
+        <div class="symptom">🤧 Cough</div>
+        <div class="symptom">🫁 Chest tightness</div>
+      </div>
+
+    </section>
+
+
+    <!-- ATTACK -->
+
+    <details>
+      <summary>🌪️ What Happens During an Asthma Attack?</summary>
+
+      <div class="content">
+
+        Asthma attacks are usually caused by exposure to triggers.
+
+        <br><br>
+
+        During an asthma attack:
+
+        <ul>
+          <li>Inflammation of the air passages increases.</li>
+          <li>The air passages narrow.</li>
+          <li>More mucus is produced.</li>
+          <li>Airflow becomes obstructed.</li>
+          <li>Breathing becomes more difficult.</li>
+        </ul>
+
+        Inflammation may also continue even when the child appears well
+        and has few asthma symptoms.
+
+      </div>
+    </details>
+
+
+    <!-- TRIGGERS -->
+
+    <details>
+      <summary>⚡ Common Asthma Triggers</summary>
+
+      <div class="content">
+
+        Triggers may differ for each child. Common triggers include:
+
+        <ul>
+          <li>
+            Viral infections, including the common cold and flu.
+          </li>
+
+          <li>
+            Environmental allergens including house dust mites,
+            animal dander, pollen and indoor mould.
+          </li>
+
+          <li>
+            Changes in temperature or humidity due to indoor and
+            outdoor climate variation.
+          </li>
+
+          <li>
+            Environmental irritants including cigarette smoke
+            and smoke haze.
+          </li>
+        </ul>
+
+        Avoid known triggers where possible.
+
+      </div>
+    </details>
+
+
+    <!-- DISTRESS -->
+
+    <details class="danger">
+      <summary>🚨 Signs of Respiratory Distress</summary>
+
+      <div class="content">
+
+        <div class="distress-grid">
+
+          <div class="distress-item">
+            <span>💨</span>
+            <strong>Tachypnoea</strong>
+            <br>
+            Fast breathing
+          </div>
+
+          <div class="distress-item">
+            <span>🫁</span>
+            <strong>Chest retractions</strong>
+          </div>
+
+          <div class="distress-item">
+            <span>👃</span>
+            <strong>Nasal flaring</strong>
+          </div>
+
+          <div class="distress-item">
+            <span>🗣️</span>
+            <strong>Unable to speak or feed</strong>
+          </div>
+
+          <div class="distress-item">
+            <span>💙</span>
+            <strong>Cyanosis</strong>
+            <br>
+            Blue lips or fingertips
+          </div>
+
+        </div>
+
+        <br>
+
+        <strong>
+          Early recognition leads to early treatment.
+        </strong>
+
+      </div>
+    </details>
+
+
+    <!-- SEVERITY -->
+
+    <details>
+      <summary>📊 Assessing Severity</summary>
+
+      <div class="content">
+
+        <div class="severity-grid">
+
+          <div class="severity-card mild">
+            <h4>⭐ MILD</h4>
+
+            <ul>
+              <li>Talking normally</li>
+              <li>Mild wheeze</li>
+              <li>Mild respiratory distress</li>
+            </ul>
+          </div>
+
+
+          <div class="severity-card moderate">
+            <h4>⭐ MODERATE</h4>
+
+            <ul>
+              <li>Increased work of breathing</li>
+              <li>Wheezing</li>
+              <li>Reduced activity</li>
+            </ul>
+          </div>
+
+
+          <div class="severity-card severe">
+            <h4>⭐ SEVERE</h4>
+
+            <ul>
+              <li>Severe respiratory distress</li>
+              <li>Unable to speak or feed</li>
+              <li>Cyanosis</li>
+              <li>Altered consciousness</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- INITIAL MANAGEMENT -->
+
+    <details>
+      <summary>🏥 Initial Management</summary>
+
+      <div class="content">
+
+        <div class="severity-grid">
+
+          <div class="severity-card mild">
+            <h4>MILD</h4>
+
+            <ul>
+              <li>Salbutamol MDI</li>
+            </ul>
+          </div>
+
+
+          <div class="severity-card moderate">
+            <h4>MODERATE</h4>
+
+            <ul>
+              <li>Salbutamol MDI</li>
+              <li>Oxygen to keep SaO₂ ≥95%</li>
+              <li>Oral Prednisolone</li>
+            </ul>
+          </div>
+
+
+          <div class="severity-card severe">
+            <h4>SEVERE</h4>
+
+            <ul>
+              <li>Oxygen to keep SaO₂ ≥95%</li>
+              <li>IV Hydrocortisone</li>
+              <li>Salbutamol MDI + Ipratropium MDI</li>
+              <li>Escalate care immediately</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <br>
+
+        <strong>
+          Always follow the current institutional asthma management guideline.
+        </strong>
+
+      </div>
+    </details>
+
+
+    <!-- MEDICINES -->
+
+    <details>
+      <summary>💊 Medicines Used to Treat Asthma</summary>
+
+      <div class="content">
+
+        There are two main groups of asthma medicines:
+
+        <div class="medicine-card reliever">
+          <h4>💨 Relievers</h4>
+
+          Medicines that work rapidly to open narrowed air passages during
+          an asthma attack.
+
+          <br><br>
+
+          They provide quick relief of asthma symptoms and help the child
+          breathe better. They are used when needed.
+        </div>
+
+
+        <div class="medicine-card controller">
+          <h4>🛡️ Controllers</h4>
+
+          Medicines that work gradually to control chronic inflammation
+          in the air passages and make them less sensitive to triggers.
+
+          <br><br>
+
+          They should be used for the prescribed duration and stopped only
+          when advised by the doctor.
+
+          <br><br>
+
+          Controllers may be prescribed intermittently or continuously
+          depending on the child's response and asthma control.
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- ACUTE ASTHMA ALGORITHM -->
+
+    <details>
+      <summary>🫁 Acute Asthma Management Algorithm</summary>
+
+      <div class="content">
+
+        <div class="algorithm-warning">
+          ⚠️ The supplied inpatient asthma management algorithm is dated
+          <strong>April 2015</strong>.
+          Verify all treatment steps and medication doses against the
+          <strong>current institutional asthma guideline</strong>
+          before clinical use.
+        </div>
+
+
+        <div class="algorithm-row mild">
+
+          <h4>⭐ Mild</h4>
+
+          <strong>Initial Treatment</strong>
+
+          <ul>
+            <li>Salbutamol MDI every 15 minutes × 2.</li>
+
+            <li>
+              Oral Prednisolone if:
+              <ul>
+                <li>Exacerbation &gt;48 hours</li>
+                <li>Past history of severe episode</li>
+                <li>
+                  Persistent asthma not responding to increased dose
+                  of inhaled steroid
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <div class="algorithm-arrow">↓</div>
+
+          <div class="review-box">
+            Review: Improving?
+          </div>
+
+          <p>
+            <strong>If yes:</strong>
+            Reduce Salbutamol MDI according to the child's condition.
+          </p>
+
+          <p>
+            <strong>If no:</strong>
+            Continue Salbutamol MDI every 15 minutes × 2 and review again.
+          </p>
+
+        </div>
+
+
+        <div class="algorithm-row moderate">
+
+          <h4>⭐ Moderate</h4>
+
+          <strong>Initial Treatment</strong>
+
+          <ul>
+            <li>
+              Oxygen to keep SaO₂ ≥95% via nasal prong / mask.
+            </li>
+
+            <li>Oral Prednisolone.</li>
+
+            <li>
+              Salbutamol MDI every 15 minutes × 2.
+            </li>
+          </ul>
+
+          <div class="algorithm-arrow">↓</div>
+
+          <div class="review-box">
+            Review: Improving?
+          </div>
+
+          <p>
+            <strong>If yes:</strong>
+            Reduce Salbutamol MDI according to the child's condition.
+          </p>
+
+          <p>
+            <strong>If no:</strong>
+            Continue Salbutamol MDI every 15 minutes × 2 and review again.
+          </p>
+
+          <p>
+            If there is still no improvement,
+            <strong>transfer to HD</strong>.
+          </p>
+
+        </div>
+
+
+        <div class="algorithm-row severe">
+
+          <h4>⭐ Severe</h4>
+
+          <strong>Initial Treatment</strong>
+
+          <ul>
+            <li>Oxygen to keep SaO₂ ≥95%.</li>
+            <li>IV Hydrocortisone.</li>
+            <li>IV Aminophylline.</li>
+            <li>Salbutamol MDI + Ipratropium MDI.</li>
+            <li>IV MgSO₄.</li>
+          </ul>
+
+          <div class="algorithm-arrow">↓</div>
+
+          <div class="review-box">
+            Review: Improving?
+          </div>
+
+          <p>
+            <strong>If yes:</strong>
+            Reduce Salbutamol / Ipratropium MDI according to
+            the child's condition.
+          </p>
+
+          <p>
+            <strong>If no:</strong>
+            Transfer to <strong>CICU</strong>.
+          </p>
+
+        </div>
+
+
+        <div class="review-box">
+          Discharge Plan / Written Action Plan / Education / Follow-up
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- SPACER TECHNIQUE -->
+
+    <details>
+      <summary>💨 How to Use Inhaler With a Spacer</summary>
+
+      <div class="content">
+
+        <div class="technique-step">
+          <div class="step-number">1</div>
+          <div>
+            Hold the inhaler upright and remove the cap.
+          </div>
+        </div>
+
+        <div class="technique-step">
+          <div class="step-number">2</div>
+          <div>
+            Shake the inhaler.
+          </div>
+        </div>
+
+        <div class="technique-step">
+          <div class="step-number">3</div>
+          <div>
+            Attach the inhaler upright into the spacer.
+          </div>
+        </div>
+
+        <div class="technique-step">
+          <div class="step-number">4</div>
+          <div>
+            Place lips over the mouthpiece and seal tightly.
+          </div>
+        </div>
+
+        <div class="technique-step">
+          <div class="step-number">5</div>
+          <div>
+            Press the inhaler once firmly and breathe in and out
+            normally for <strong>six breaths</strong> from the spacer
+            through the mouthpiece.
+          </div>
+        </div>
+
+        <div class="technique-step">
+          <div class="step-number">6</div>
+          <div>
+            For another dose, wait for <strong>1 minute</strong>
+            and repeat Steps 2 to 5.
+          </div>
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- CARE -->
+
+    <details>
+      <summary>🧼 How to Care for the Spacer and Inhaler</summary>
+
+      <div class="content">
+
+        <ol>
+          <li>
+            Clean the spacer at least once a month.
+          </li>
+
+          <li>
+            Soak the spacer completely in mild soapy water made by adding
+            2–3 drops of dishwashing liquid into a container of water
+            for approximately 15–20 minutes.
+            Do not scrub the spacer.
+            Do not rinse it again after removing it from the soapy water.
+          </li>
+
+          <li>
+            Allow the spacer to drip dry.
+            Do not use tissue paper or cloth to dry it after washing.
+          </li>
+
+          <li>
+            These steps help reduce static charge within the spacer
+            and allow better delivery of medicine from the inhaler
+            to the lungs.
+          </li>
+
+          <li>
+            If the spacer needs to be used urgently before it is dry,
+            prime the spacer by actuating
+            <strong>10 puffs of reliever medicine</strong>
+            into it after drying.
+          </li>
+
+          <li>
+            Wash the plastic holder of the inhaler once a week
+            under warm running water and air dry thoroughly before
+            putting the inhaler back into it.
+          </li>
+        </ol>
+
+      </div>
+    </details>
+
+
+    <!-- OTHER NOTES -->
+
+    <details>
+      <summary>📌 What Else Should I Take Note Of?</summary>
+
+      <div class="content">
+
+        <ul>
+          <li>
+            Rinse the mouth after using inhaled controller medicine(s).
+          </li>
+
+          <li>
+            Ensure there is medicine in the inhaler before use.
+          </li>
+
+          <li>
+            Change to a new inhaler when the dose counter reads
+            <strong>“000”</strong>.
+          </li>
+
+          <li>
+            If the inhaler does not have a dose counter, keep track of the
+            remaining doses using a diary or based on the inhaler's
+            starting dose and usage.
+          </li>
+
+          <li>
+            Do not expose the child to second-hand or third-hand
+            cigarette smoke.
+          </li>
+
+          <li>
+            Allow the child to rest and avoid exercise during and
+            soon after an asthma attack.
+          </li>
+        </ul>
+
+      </div>
+    </details>
+
+
+    <!-- SEEK HELP -->
+
+    <details class="danger">
+      <summary>🚨 Consult the Doctor During an Asthma Attack If...</summary>
+
+      <div class="content">
+
+        The child:
+
+        <ul>
+          <li>
+            Remains breathless despite reliever medicine according to
+            the asthma action plan.
+          </li>
+
+          <li>
+            Is unable to feed or take in fluids well.
+          </li>
+
+          <li>
+            Is unable to speak in complete sentences.
+          </li>
+
+          <li>
+            Is drowsy, unresponsive or lethargic.
+          </li>
+
+          <li>
+            Is irritable and difficult to calm.
+          </li>
+        </ul>
+
+      </div>
+    </details>
+
+
+    <!-- DISCHARGE -->
+
+    <details class="discharge">
+      <summary>✅ Ready for Discharge When...</summary>
+
+      <div class="content">
+
+        <ul>
+          <li>No or end-expiratory wheeze.</li>
+          <li>No or mild retractions.</li>
+
+          <li>
+            Not tachypnoeic on 4-hourly inhaled bronchodilators
+            or 6-hourly oral bronchodilators.
+          </li>
+
+          <li>
+            SaO₂ ≥95% on room air.
+          </li>
+
+          <li>
+            Hydration and nutrition adequate.
+          </li>
+
+          <li>
+            Correct inhalation technique.
+          </li>
+
+          <li>
+            Parents and patients have been counselled and understand
+            the action plan and adherence to prescribed medication.
+          </li>
+        </ul>
+
+      </div>
+    </details>
+
+
+    <div class="note">
+
+      📖 Information adapted from supplied KKH resources and
+      institutional asthma management materials.
+
+      <br><br>
+
+      For educational purposes only. Do not distribute.
+
+      <br><br>
+
+      ⚠️ Acute asthma management must follow the
+      <strong>current institutional guideline</strong>.
+      The supplied algorithm is dated April 2015.
+
+    </div>
+
+
+    <a class="back" href="index.html">
+      ← Back to Kiddy Book
+    </a>
+
+  </main>
+
+</body>
+</html>
