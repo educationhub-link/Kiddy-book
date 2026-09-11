@@ -1,1 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Fever in Children | Kiddy Book</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fffaf7;
+      color: #493d38;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: auto;
+      padding: 22px 18px 45px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #fff0ed, #ffe1dc);
+      border-radius: 30px;
+      padding: 30px 20px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .header .emoji {
+      font-size: 55px;
+    }
+
+    .header h1 {
+      margin: 10px 0 5px;
+      font-size: 38px;
+      color: #b34f4f;
+    }
+
+    .header p {
+      margin: 0;
+      color: #8b7770;
+      font-size: 18px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .page-title h2 {
+      margin: 0;
+      color: #d44f58;
+      font-size: 31px;
+    }
+
+    .page-title p {
+      color: #777;
+      margin-top: 8px;
+    }
+
+    .intro {
+      background: white;
+      border: 2px solid #f0d5d2;
+      border-radius: 24px;
+      padding: 22px;
+      margin-bottom: 20px;
+      line-height: 1.65;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.04);
+    }
+
+    .intro h3 {
+      margin-top: 0;
+      color: #d44f58;
+      font-size: 23px;
+    }
+
+    .highlight {
+      background: #fff2f0;
+      border-left: 5px solid #e86767;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 15px;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+
+    details {
+      background: white;
+      border: 2px solid #eadfda;
+      border-radius: 22px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.035);
+    }
+
+    summary {
+      padding: 19px 20px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      list-style: none;
+      color: #51443f;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "＋";
+      float: right;
+      color: #c86565;
+      font-size: 23px;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    .content {
+      padding: 0 20px 22px;
+      line-height: 1.65;
+    }
+
+    .content ul {
+      padding-left: 22px;
+      margin-bottom: 0;
+    }
+
+    .content li {
+      margin-bottom: 10px;
+    }
+
+    .temp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .temp-card {
+      background: #f7fbff;
+      border: 1px solid #cfe3ee;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .temp-icon {
+      font-size: 32px;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .comfort-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .comfort-item {
+      background: #f5fbf6;
+      border: 1px solid #d4ead8;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .comfort-item span {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .med-card {
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    .paracetamol {
+      background: #fff2f4;
+      border: 1px solid #f3bbc4;
+    }
+
+    .ibuprofen {
+      background: #f1faf3;
+      border: 1px solid #bfe0c7;
+    }
+
+    .diclofenac {
+      background: #f6f2ff;
+      border: 1px solid #d6caef;
+    }
+
+    .med-card h4 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .paracetamol h4 {
+      color: #d84761;
+    }
+
+    .ibuprofen h4 {
+      color: #368654;
+    }
+
+    .diclofenac h4 {
+      color: #6b50a0;
+    }
+
+    .warning {
+      background: #fff8df;
+      border: 2px solid #f0d27a;
+    }
+
+    .warning summary {
+      color: #9c6b00;
+    }
+
+    .red-flag {
+      background: #fff2f2;
+      border: 2px solid #f1b5b5;
+    }
+
+    .red-flag summary {
+      color: #c44545;
+    }
+
+    .remember {
+      background: #f1f8ff;
+      border: 1px solid #c7def4;
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 18px;
+      line-height: 1.65;
+    }
+
+    .remember strong {
+      color: #285f9f;
+    }
+
+    .note {
+      background: #f6f2ff;
+      border: 1px solid #dfd5f4;
+      border-radius: 18px;
+      padding: 17px;
+      margin-top: 22px;
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: center;
+      color: #665a72;
+    }
+
+    .back {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: #f0e7e1;
+      color: #604d45;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 520px) {
+      .header h1 {
+        font-size: 32px;
+      }
+
+      .page-title h2 {
+        font-size: 27px;
+      }
+
+      .temp-grid,
+      .comfort-grid {
+        grid-template-columns: 1fr;
+      }
+
+      summary {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header class="header">
+      <div class="emoji">🌡️</div>
+      <h1>Kiddy Book</h1>
+      <p>Paediatric Quick Reference</p>
+    </header>
+
+    <div class="page-title">
+      <h2>🌡️ Fever in Children</h2>
+      <p>Recognise • Manage • Care</p>
+    </div>
+
+
+    <!-- WHAT IS FEVER -->
+
+    <section class="intro">
+
+      <h3>❤️ What is Fever?</h3>
+
+      The human body has a thermostat which regulates body temperature.
+      Normal body temperature is approximately
+      <strong>36.5°C to 37.5°C</strong>.
+
+      <br><br>
+
+      During infection or other illnesses, chemicals released in the body
+      can reset this thermostat, resulting in fever.
+
+      <div class="highlight">
+        Fever is the body's natural way of fighting infection.
+      </div>
+
+    </section>
+
+
+    <!-- FEVER POINTS -->
+
+    <details>
+      <summary>📌 A Few Points About Fever</summary>
+
+      <div class="content">
+
+        <ul>
+          <li>
+            Fever is the body's way of fighting infection.
+            However, fever is not caused by infections alone.
+          </li>
+
+          <li>
+            How high a fever is does not necessarily indicate
+            the severity of the illness causing it.
+          </li>
+
+          <li>
+            Overwrapping and a generally hot environment can cause
+            a child's temperature to be slightly above normal.
+          </li>
+
+          <li>
+            Fever caused by viral infections may persist for
+            <strong>5 to 7 days</strong>.
+          </li>
+
+          <li>
+            A small percentage of children aged between
+            <strong>6 months and 6 years</strong> may experience
+            seizures with high fever.
+          </li>
+
+          <li>
+            High fever itself or febrile seizures usually do not
+            lead to brain damage.
+          </li>
+        </ul>
+
+      </div>
+    </details>
+
+
+    <!-- TEMPERATURE -->
+
+    <details>
+      <summary>🌡️ Temperature Measurement</summary>
+
+      <div class="content">
+
+        <div class="temp-grid">
+
+          <div class="temp-card">
+            <span class="temp-icon">👶</span>
+
+            <strong>Below 6 months</strong>
+            <br><br>
+
+            Axillary temperature
+            <br>
+            unless contraindicated
+          </div>
+
+          <div class="temp-card">
+            <span class="temp-icon">🧒</span>
+
+            <strong>6 months and above</strong>
+            <br><br>
+
+            Tympanic temperature
+            <br>
+            unless contraindicated
+          </div>
+
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- COMFORT -->
+
+    <details>
+      <summary>💚 Comfort Measures</summary>
+
+      <div class="content">
+
+        <div class="comfort-grid">
+
+          <div class="comfort-item">
+            <span>💧</span>
+            Encourage your child to take plenty of fluids.
+          </div>
+
+          <div class="comfort-item">
+            <span>👕</span>
+            Dress the child in light, thin clothing.
+          </div>
+
+          <div class="comfort-item">
+            <span>🪟</span>
+            Maintain a cool, well-ventilated environment.
+          </div>
+
+          <div class="comfort-item">
+            <span>❄️</span>
+            Use a cooling mattress when indicated, if available.
+          </div>
+
+          <div class="comfort-item">
+            <span>💊</span>
+            Administer antipyretics as prescribed and monitor their effect.
+          </div>
+
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- MEDICATIONS -->
+
+    <details>
+      <summary>💊 Fever Medications</summary>
+
+      <div class="content">
+
+        <div class="med-card paracetamol">
+
+          <h4>Paracetamol</h4>
+
+          <strong>First-line medication</strong>
+
+          <ul>
+            <li>
+              Give every <strong>4 hours</strong> if temperature
+              is above <strong>38.5°C</strong>.
+            </li>
+
+            <li>
+              Give every <strong>6 hours</strong> if temperature
+              is less than <strong>38.5°C</strong>.
+            </li>
+
+            <li>
+              Do not use in infants younger than
+              <strong>3 months old</strong>.
+            </li>
+          </ul>
+
+        </div>
+
+
+        <div class="med-card ibuprofen">
+
+          <h4>Ibuprofen</h4>
+
+          <ul>
+            <li>
+              Use when fever remains persistently above
+              <strong>38.5°C</strong>, 1–2 hours after paracetamol.
+            </li>
+
+            <li>
+              Usually given every <strong>6 hours</strong>.
+            </li>
+
+            <li>
+              Do not use in infants younger than
+              <strong>6 months old</strong>.
+            </li>
+
+            <li>
+              In infants aged <strong>6 months to less than 1 year</strong>,
+              it may be given every <strong>8 hours</strong>.
+            </li>
+          </ul>
+
+        </div>
+
+
+        <div class="med-card diclofenac">
+
+          <h4>Diclofenac Na (Voltaren Suppositories)</h4>
+
+          <ul>
+            <li>
+              Use when fever remains persistently above
+              <strong>38.5°C</strong>, 1–2 hours after paracetamol.
+            </li>
+
+            <li>
+              Give every <strong>12 hours</strong>.
+            </li>
+
+            <li>
+              Do not use in infants younger than
+              <strong>1 year old</strong> unless advised by the doctor.
+            </li>
+          </ul>
+
+        </div>
+
+
+        <div class="remember">
+
+          🌡️ Fever medications usually bring down the temperature by
+          approximately <strong>1–2°C</strong>.
+
+          <br><br>
+
+          Do not be alarmed if the child is still having a fever
+          after medication.
+
+          <br><br>
+
+          <strong>
+            Antibiotics are of no use in viral fevers.
+          </strong>
+
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- IMPORTANT -->
+
+    <details class="warning">
+      <summary>⚠️ Important Medication Precautions</summary>
+
+      <div class="content">
+
+        <ul>
+          <li>
+            <strong>Do not give ibuprofen and diclofenac together</strong>
+            as they belong to the same class of medications.
+          </li>
+
+          <li>
+            Avoid either ibuprofen or diclofenac if the child has
+            severe vomiting or a bleeding disorder, due to possible
+            bleeding from the stomach and intestines.
+          </li>
+
+          <li>
+            <strong>Do not give aspirin</strong> unless advised by the doctor.
+          </li>
+        </ul>
+
+      </div>
+    </details>
+
+
+    <!-- SEEK MEDICAL ATTENTION -->
+
+    <details class="red-flag">
+      <summary>🚨 Seek Medical Attention If...</summary>
+
+      <div class="content">
+
+        Consult the doctor if the child:
+
+        <ul>
+          <li>Is feeding poorly.</li>
+          <li>Is vomiting or lethargic.</li>
+
+          <li>
+            Is very young, especially
+            <strong>less than 3 months old</strong>.
+          </li>
+
+          <li>Has difficulty breathing.</li>
+          <li>Is drowsy.</li>
+          <li>Appears sicker.</li>
+          <li>Has decreased urine output.</li>
+
+          <li>
+            Has new symptoms such as
+            <strong>abdominal pain or rash</strong>.
+          </li>
+        </ul>
+
+      </div>
+    </details>
+
+
+    <div class="note">
+      📖 Information adapted from KKH resources.
+      <br>
+      For educational purposes only.
+      Do not distribute.
+      <br><br>
+      Always follow the prescribed medication order and
+      your institution's clinical policies.
+    </div>
+
+
+    <a class="back" href="index.html">
+      ← Back to Kiddy Book
+    </a>
+
+  </main>
+
+</body>
+</html>
