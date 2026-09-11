@@ -1,1 +1,10 @@
-
+{
+  "name": "Kiddy Book - Paediatric Quick Reference",
+  "short_name": "Kiddy Book",
+  "start_url": "/Kiddy-book/",
+  "scope": "/Kiddy-book/",
+  "display": "standalone",
+  "background_color": "#fffaf7",
+  "theme_color": "#ffe9dc",
+  "description": "Paediatric Quick Reference - Small Hands, Big Hearts"
+}
