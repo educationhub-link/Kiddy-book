@@ -1,1 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Hypoglycaemia | Kiddy Book</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fffaf7;
+      color: #493d38;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 22px 18px 45px;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #fff3f8, #f4eeff);
+      border-radius: 30px;
+      padding: 30px 20px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .header .emoji {
+      font-size: 55px;
+    }
+
+    .header h1 {
+      margin: 10px 0 5px;
+      font-size: 38px;
+      color: #8a5488;
+    }
+
+    .header p {
+      margin: 0;
+      color: #887687;
+      font-size: 18px;
+    }
+
+    .page-title {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .page-title h2 {
+      margin: 0;
+      color: #a34f79;
+      font-size: 31px;
+    }
+
+    .page-title p {
+      color: #777;
+      margin-top: 8px;
+    }
+
+    .intro {
+      background: white;
+      border: 2px solid #ebd8e5;
+      border-radius: 24px;
+      padding: 22px;
+      margin-bottom: 20px;
+      line-height: 1.65;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.04);
+    }
+
+    .intro h3 {
+      margin-top: 0;
+      color: #a34f79;
+    }
+
+    .threshold-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .threshold {
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .diabetes-threshold {
+      background: #fff0f5;
+      border: 1px solid #efc2d3;
+    }
+
+    .general-threshold {
+      background: #f6f2ff;
+      border: 1px solid #dcd0ee;
+    }
+
+    details {
+      background: white;
+      border: 2px solid #eadfda;
+      border-radius: 22px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.035);
+    }
+
+    summary {
+      padding: 19px 20px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      list-style: none;
+      color: #51443f;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "＋";
+      float: right;
+      color: #b45c87;
+      font-size: 23px;
+    }
+
+    details[open] summary::after {
+      content: "−";
+    }
+
+    .content {
+      padding: 0 20px 22px;
+      line-height: 1.65;
+    }
+
+    .content ul,
+    .content ol {
+      padding-left: 22px;
+    }
+
+    .content li {
+      margin-bottom: 10px;
+    }
+
+    .symptom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .symptom {
+      background: #fff7fa;
+      border: 1px solid #efd7e0;
+      border-radius: 15px;
+      padding: 14px;
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .severe-box {
+      background: #fff0f0;
+      border: 1px solid #efbbbb;
+      border-radius: 17px;
+      padding: 16px;
+      margin-top: 15px;
+      line-height: 1.6;
+    }
+
+    .cause-card {
+      border-radius: 17px;
+      padding: 16px;
+      margin-top: 12px;
+      line-height: 1.55;
+    }
+
+    .cause1 {
+      background: #fff9e9;
+      border: 1px solid #ead8a0;
+    }
+
+    .cause2 {
+      background: #eef8ff;
+      border: 1px solid #c9deef;
+    }
+
+    .cause3 {
+      background: #f2faf2;
+      border: 1px solid #c9dfc9;
+    }
+
+    .cause4 {
+      background: #f7f2ff;
+      border: 1px solid #d9ccef;
+    }
+
+    .cause5 {
+      background: #fff3f3;
+      border: 1px solid #e9c4c4;
+    }
+
+    .cause-card h4 {
+      margin: 0 0 9px;
+      font-size: 18px;
+    }
+
+    .workflow {
+      background: #fffdf9;
+      border: 2px solid #f0d6ad;
+    }
+
+    .workflow summary {
+      color: #a66c20;
+    }
+
+    .workflow-warning {
+      background: #fff6dd;
+      border: 1px solid #ecd18b;
+      border-radius: 16px;
+      padding: 15px;
+      margin-bottom: 18px;
+      line-height: 1.55;
+      color: #6d571d;
+    }
+
+    .flow-box {
+      border-radius: 18px;
+      padding: 17px;
+      text-align: center;
+      margin: 10px 0;
+      line-height: 1.55;
+    }
+
+    .flow-start {
+      background: #fff0f5;
+      border: 2px solid #e7aac2;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .flow-treatment {
+      background: #fff8df;
+      border: 2px solid #e9cf7c;
+    }
+
+    .flow-check {
+      background: #edf7ff;
+      border: 2px solid #b7d9ef;
+      font-weight: bold;
+    }
+
+    .flow-success {
+      background: #eff9ef;
+      border: 2px solid #b8dbb9;
+    }
+
+    .flow-arrow {
+      text-align: center;
+      font-size: 27px;
+      margin: 5px 0;
+    }
+
+    .carb-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 13px;
+    }
+
+    .carb-option {
+      background: white;
+      border: 1px solid #e6d7b1;
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+      line-height: 1.45;
+    }
+
+    .decision {
+      background: #f5f2ff;
+      border: 2px solid #d4c5eb;
+      border-radius: 18px;
+      padding: 17px;
+      margin: 10px 0;
+      text-align: center;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .decision-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .decision-card {
+      border-radius: 17px;
+      padding: 16px;
+      line-height: 1.55;
+    }
+
+    .no-card {
+      background: #fff2f2;
+      border: 1px solid #eabbbb;
+    }
+
+    .yes-card {
+      background: #eff9f1;
+      border: 1px solid #bcdcc2;
+    }
+
+    .meal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .meal-card {
+      border-radius: 17px;
+      padding: 17px;
+      line-height: 1.55;
+    }
+
+    .meal {
+      background: #f2faf1;
+      border: 1px solid #c7ddc4;
+    }
+
+    .outside {
+      background: #f3f8ff;
+      border: 1px solid #c9daed;
+    }
+
+    .critical {
+      background: #fff4f0;
+      border: 2px solid #edc0af;
+    }
+
+    .critical summary {
+      color: #b3563a;
+    }
+
+    .treatment {
+      background: #fff4f6;
+      border: 2px solid #edbcc9;
+    }
+
+    .treatment summary {
+      color: #b44465;
+    }
+
+    .treatment-box {
+      border-radius: 16px;
+      padding: 16px;
+      margin-top: 13px;
+      line-height: 1.6;
+    }
+
+    .asymptomatic {
+      background: #f3faf0;
+      border: 1px solid #c7dec0;
+    }
+
+    .symptomatic {
+      background: #fff0f0;
+      border: 1px solid #ebbbbb;
+    }
+
+    .warning-box {
+      background: #bd4564;
+      color: white;
+      border-radius: 18px;
+      padding: 18px;
+      margin-top: 16px;
+      line-height: 1.6;
+      font-weight: bold;
+    }
+
+    .note {
+      background: #f6f2ff;
+      border: 1px solid #dfd5f4;
+      border-radius: 18px;
+      padding: 17px;
+      margin-top: 22px;
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: center;
+      color: #665a72;
+    }
+
+    .back {
+      display: block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: #f0e7e1;
+      color: #604d45;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 16px;
+      border-radius: 18px;
+      margin-top: 22px;
+    }
+
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 32px;
+      }
+
+      .page-title h2 {
+        font-size: 27px;
+      }
+
+      .threshold-grid,
+      .symptom-grid,
+      .decision-grid,
+      .meal-grid,
+      .carb-options {
+        grid-template-columns: 1fr;
+      }
+
+      summary {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="container">
+
+    <header class="header">
+      <div class="emoji">🍬</div>
+      <h1>Kiddy Book</h1>
+      <p>Paediatric Quick Reference</p>
+    </header>
+
+    <div class="page-title">
+      <h2>🍬 Hypoglycaemia</h2>
+      <p>Recognise • Treat • Recheck</p>
+    </div>
+
+
+    <!-- DEFINITION -->
+
+    <section class="intro">
+
+      <h3>🩸 What is Hypoglycaemia?</h3>
+
+      The definition of low blood glucose depends on the clinical context,
+      age, symptoms and underlying condition.
+
+      <br><br>
+
+      Autonomic effects and hypoglycaemia awareness may occur at a blood
+      glucose level of approximately <strong>3.0 mmol/L</strong>.
+
+      <div class="threshold-grid">
+
+        <div class="threshold diabetes-threshold">
+          <strong>Paediatric Patients With Diabetes</strong>
+          <br><br>
+          Hypoglycaemia:
+          <br>
+          <strong>BG / CBG &lt; 4.0 mmol/L</strong>
+        </div>
+
+        <div class="threshold general-threshold">
+          <strong>General Reference</strong>
+          <br><br>
+          Recurrent BG &lt;3 mmol/L, or &lt;3.5 mmol/L when symptomatic,
+          warrants further assessment.
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SIGNS -->
+
+    <details>
+      <summary>🚨 Signs & Symptoms</summary>
+
+      <div class="content">
+
+        Common symptoms may include:
+
+        <div class="symptom-grid">
+
+          <div class="symptom">💓 Palpitations</div>
+          <div class="symptom">🤲 Tremor</div>
+          <div class="symptom">😰 Anxiety</div>
+          <div class="symptom">💦 Sweating</div>
+          <div class="symptom">🍽️ Hunger</div>
+          <div class="symptom">⚡ Paraesthesia</div>
+
+        </div>
+
+        <div class="severe-box">
+          <strong>Severe hypoglycaemia may present with:</strong>
+
+          <ul>
+            <li>Lethargy</li>
+            <li>Irritability or unusual behaviour</li>
+            <li>Hypothermia</li>
+            <li>Confusion</li>
+            <li>Coma</li>
+            <li>Seizures</li>
+          </ul>
+        </div>
+
+        <div class="severe-box">
+          <strong>In neonates &lt;48 hours, features may include:</strong>
+
+          <ul>
+            <li>Apnoea</li>
+            <li>Hypotonia</li>
+            <li>Jitteriness</li>
+            <li>Poor feeding</li>
+            <li>High-pitched cry</li>
+          </ul>
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- CAUSES -->
+
+    <details>
+      <summary>🔍 Causes of Hypoglycaemia</summary>
+
+      <div class="content">
+
+        <div class="cause-card cause1">
+          <h4>🍽️ Poor / Low Substrate</h4>
+
+          <ul>
+            <li>Inadequate feeding</li>
+            <li>Gastrointestinal losses</li>
+            <li>Intrauterine growth restriction / prematurity</li>
+            <li>Thin child with poor glycogen stores</li>
+          </ul>
+        </div>
+
+
+        <div class="cause-card cause2">
+          <h4>🔥 Increased Glucose Utilisation</h4>
+
+          <ul>
+            <li>Sepsis</li>
+            <li>Shock</li>
+            <li>Hypothermia</li>
+            <li>Asphyxia</li>
+            <li>Polycythaemia / hyperviscosity</li>
+            <li>Fever</li>
+          </ul>
+        </div>
+
+
+        <div class="cause-card cause3">
+          <h4>🧬 Hyperinsulinaemic Hypoglycaemia</h4>
+
+          <ul>
+            <li>Infant of diabetic mother</li>
+            <li>Excessive maternal intravenous glucose</li>
+            <li>Perinatal asphyxia</li>
+            <li>Congenital causes</li>
+            <li>Islet cell adenoma</li>
+            <li>Beckwith-Wiedemann syndrome</li>
+            <li>Dumping syndrome</li>
+          </ul>
+        </div>
+
+
+        <div class="cause-card cause4">
+          <h4>🧪 Inborn Errors of Metabolism</h4>
+
+          <ul>
+            <li>Glycogen storage disorders</li>
+            <li>Defects in gluconeogenesis</li>
+            <li>Carnitine metabolism disorders</li>
+            <li>Fatty acid oxidation disorders</li>
+            <li>Defects in ketone body synthesis / utilisation</li>
+          </ul>
+        </div>
+
+
+        <div class="cause-card cause5">
+          <h4>💊 Other Causes</h4>
+
+          <ul>
+            <li>
+              Drug-induced hypoglycaemia including insulin,
+              sulphonylureas and other implicated medications
+            </li>
+
+            <li>
+              Accelerated starvation / idiopathic ketotic hypoglycaemia
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- HISTORY -->
+
+    <details>
+      <summary>🩺 History & Clinical Assessment</summary>
+
+      <div class="content">
+
+        Important history may include:
+
+        <ul>
+          <li>Symptoms suggestive of hypoglycaemia</li>
+
+          <li>
+            Birth history including birth weight, gestation and
+            maternal gestational diabetes
+          </li>
+
+          <li>Neonatal history of hypoglycaemia</li>
+
+          <li>
+            Previous episodes suggestive of hypoglycaemia
+          </li>
+
+          <li>
+            Previous gastric surgery or fundoplication
+          </li>
+
+          <li>Relationship of episodes to meal timing</li>
+          <li>Intercurrent illness with poor feeding</li>
+          <li>Increased glucose requirements such as sepsis or trauma</li>
+          <li>Drug or toxin ingestion</li>
+          <li>Relevant family history</li>
+        </ul>
+
+        Clinical examination may include assessment for:
+
+        <ul>
+          <li>Macrosomia</li>
+          <li>Dysmorphic features</li>
+          <li>Features of endocrinopathy</li>
+          <li>Skin hyperpigmentation</li>
+          <li>Hepatomegaly or hepatosplenomegaly</li>
+          <li>Hypotonia</li>
+          <li>Blood pressure abnormalities</li>
+        </ul>
+
+      </div>
+    </details>
+
+
+    <!-- DIABETES WORKFLOW -->
+
+    <details class="workflow" open>
+      <summary>🍭 Paediatric Diabetes Hypoglycaemia Workflow</summary>
+
+      <div class="content">
+
+        <div class="workflow-warning">
+          ⚠️ This workflow is for
+          <strong>paediatric patients with diabetes</strong>
+          and is based on the supplied
+          <strong>Diabetes (Nursing) – Sep 2021</strong> reference.
+          Follow the current institutional policy if it has been updated.
+        </div>
+
+
+        <div class="flow-box flow-start">
+          🩸 Capillary Blood Glucose
+          <br>
+          <strong>&lt; 4 mmol/L</strong>
+        </div>
+
+        <div class="flow-arrow">↓</div>
+
+
+        <div class="flow-box flow-treatment">
+
+          <strong>🍬 Serve 15 g of fast-absorbed carbohydrate</strong>
+
+          <div class="carb-options">
+
+            <div class="carb-option">
+              🥄 <strong>Glucose water</strong>
+              <br><br>
+              Dilute 3 teaspoons of glucose powder in 120 mL water
+            </div>
+
+            <div class="carb-option">
+              🍬 <strong>Sweets</strong>
+              <br><br>
+              3 pieces
+            </div>
+
+            <div class="carb-option">
+              🧃 <strong>Fruit juice</strong>
+              <br><br>
+              120 mL
+            </div>
+
+            <div class="carb-option">
+              🥤 <strong>Regular soft drink</strong>
+              <br><br>
+              120 mL
+            </div>
+
+          </div>
+
+          <br>
+
+          <strong>Legend</strong>
+          <br>
+          1 level teaspoon glucose powder = 5 g carbohydrate
+          <br>
+          1 sweet = 5 g carbohydrate
+
+        </div>
+
+
+        <div class="flow-arrow">↓</div>
+
+
+        <div class="flow-box flow-check">
+          ⏱️ Recheck CBG after
+          <strong>15 minutes</strong>
+        </div>
+
+
+        <div class="flow-arrow">↓</div>
+
+
+        <div class="decision">
+          Is CBG &gt; 4 mmol/L?
+        </div>
+
+
+        <div class="decision-grid">
+
+          <div class="decision-card no-card">
+
+            <strong>❌ NO</strong>
+
+            <br><br>
+
+            Repeat
+            <strong>15 g fast-absorbed carbohydrate</strong>
+
+            <br><br>
+
+            Then recheck CBG again after
+            <strong>15 minutes</strong>.
+          </div>
+
+
+          <div class="decision-card yes-card">
+
+            <strong>✅ YES</strong>
+
+            <br><br>
+
+            Inform the doctor to review the patient and advise the next step.
+
+            <br><br>
+
+            Consider adjustment of existing insulin or oral hypoglycaemic
+            agent if needed, according to medical advice.
+          </div>
+
+        </div>
+
+
+        <div class="flow-arrow">↓</div>
+
+
+        <div class="meal-grid">
+
+          <div class="meal-card meal">
+
+            <strong>🍽️ If at Meal Time</strong>
+
+            <ul>
+              <li>
+                Give insulin injection or OHA as prescribed
+              </li>
+
+              <li>
+                <strong>Do not omit insulin or OHA</strong>
+              </li>
+
+              <li>Serve meal</li>
+
+              <li>
+                Continue CBG checks as ordered
+              </li>
+            </ul>
+
+          </div>
+
+
+          <div class="meal-card outside">
+
+            <strong>🍞 If Outside Meal Time</strong>
+
+            <ul>
+              <li>
+                Serve 3 crackers
+                <strong>OR</strong>
+                1 slice of bread
+                <strong>OR</strong>
+                240 mL milk
+              </li>
+
+              <li>
+                Check CBG
+                <strong>2 hours later</strong>
+              </li>
+            </ul>
+
+          </div>
+
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- INVESTIGATIONS -->
+
+    <details class="critical">
+      <summary>🧪 Investigations & Critical Sample</summary>
+
+      <div class="content">
+
+        Where clinically possible, obtain blood and urine samples
+        <strong>at the time of hypoglycaemia</strong> and
+        <strong>before glucose is given</strong>.
+
+        <br><br>
+
+        <strong>
+          Treatment must not be delayed if the patient requires urgent
+          correction.
+        </strong>
+
+        <br><br>
+
+        Critical investigations may include:
+
+        <ul>
+          <li>
+            Hormonal studies:
+            insulin, C-peptide, cortisol and growth hormone
+          </li>
+
+          <li>
+            Glucose and ketones
+          </li>
+
+          <li>
+            Plasma acylcarnitine profile
+          </li>
+
+          <li>
+            Free fatty acids
+          </li>
+
+          <li>
+            Lactate
+          </li>
+
+          <li>
+            Plasma ammonia
+          </li>
+
+          <li>
+            Amino acids
+          </li>
+
+          <li>
+            Urine organic acids
+          </li>
+        </ul>
+
+        Further investigations may be required depending on the
+        suspected cause.
+
+      </div>
+    </details>
+
+
+    <!-- GENERAL TREATMENT -->
+
+    <details class="treatment">
+      <summary>💉 General Hypoglycaemia Treatment Reference</summary>
+
+      <div class="content">
+
+        <div class="workflow-warning">
+
+          This section is a
+          <strong>general hypoglycaemia reference</strong>
+          and is separate from the diabetes-specific
+          CBG &lt;4 mmol/L workflow above.
+
+          <br><br>
+
+          Follow current institutional orders and escalation pathways.
+
+        </div>
+
+
+        <div class="treatment-box asymptomatic">
+
+          <strong>🙂 If Asymptomatic</strong>
+
+          <ul>
+            <li>
+              Aim to restore BG above
+              <strong>3.5 mmol/L</strong>
+              through normal nutritional intake where appropriate.
+            </li>
+
+            <li>
+              Oral glucose or carbohydrate may be administered
+              according to the prescribed institutional protocol.
+            </li>
+
+            <li>
+              Follow with a carbohydrate serving where indicated.
+            </li>
+          </ul>
+
+        </div>
+
+
+        <div class="treatment-box symptomatic">
+
+          <strong>🚨 If Symptomatic / Unable to Take Orally</strong>
+
+          <ul>
+
+            <li>
+              Administer glucose according to the prescribed emergency
+              treatment protocol.
+            </li>
+
+            <li>
+              The supplied reference describes
+              <strong>10% IV dextrose 2 mL/kg</strong>
+              as a slow bolus over
+              <strong>2–5 minutes</strong>.
+            </li>
+
+            <li>
+              Maintenance IV dextrose may be required and should be
+              adjusted according to the patient's glucose response and
+              medical order.
+            </li>
+
+            <li>
+              Recheck BG approximately
+              <strong>15–30 minutes</strong>
+              after corrective measures, according to the clinical plan.
+            </li>
+
+            <li>
+              Recurrent or refractory hypoglycaemia requires medical
+              review and escalation.
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+    </details>
+
+
+    <!-- IMPORTANT -->
+
+    <details>
+      <summary>⚠️ Important Reminders</summary>
+
+      <div class="content">
+
+        <ul>
+
+          <li>
+            Always assess the child's symptoms and clinical condition,
+            not the glucose value alone.
+          </li>
+
+          <li>
+            Altered consciousness, seizures or inability to take oral
+            carbohydrate require urgent medical assessment and treatment.
+          </li>
+
+          <li>
+            Recurrent hypoglycaemia requires further investigation
+            for an underlying cause.
+          </li>
+
+          <li>
+            Where possible, obtain a critical sample before glucose
+            administration, but
+            <strong>never delay urgent treatment</strong>.
+          </li>
+
+          <li>
+            Recheck blood glucose after corrective measures according
+            to the relevant protocol.
+          </li>
+
+        </ul>
+
+
+        <div class="warning-box">
+
+          🚨 Escalate promptly if hypoglycaemia is severe, recurrent,
+          associated with seizures or altered consciousness,
+          or fails to respond to initial treatment.
+
+        </div>
+
+      </div>
+    </details>
+
+
+    <div class="note">
+
+      📖 Information adapted from the supplied KKH Baby Bear Book
+      and Paediatric Hypoglycaemia Management Workflow.
+
+      <br><br>
+
+      For educational purposes only. Do not distribute.
+
+      <br><br>
+
+      ⚠️ The supplied diabetes nursing workflow is dated
+      <strong>September 2021</strong>.
+      Always follow the current institutional guideline,
+      medication order and clinical escalation pathway.
+
+    </div>
+
+
+    <a class="back" href="index.html">
+      ← Back to Kiddy Book
+    </a>
+
+  </main>
+
+</body>
+</html>
